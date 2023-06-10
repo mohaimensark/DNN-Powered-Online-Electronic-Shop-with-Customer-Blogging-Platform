@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change P Tag and Button Text</title>
+  <script>
+    function changeText() {
+      var paragraph = document.getElementById("myParagraph");
+      var button = document.getElementById("myButton");
+      
+      paragraph.textContent = "New text!";
+      button.textContent = "New button text!";
+    }
+  </script>
+</head>
+<body>
+  <p id="myParagraph">Initial text</p>
+  <button id="myButton" onclick="changeText()">Click me</button>
+</body>
+</html>

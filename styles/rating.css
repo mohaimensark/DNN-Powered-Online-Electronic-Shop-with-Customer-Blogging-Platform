@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial;
+    
+  }
+  
+  .heading {
+    font-size: 30px;
+   
+    margin-right: 25px;
+  }
+  
+  .fa {
+    font-size: 25px;
+  }
+  .titler{
+    margin-top: 30px;
+    color: rgb(3, 0, 2);
+    font-size: 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .submitbtn{
+    max-width: 200px;
+    border-radius: 20px;
+    background-color: #310202;
+    color: #f1f1f1;
+    margin-top: 30px;
+  }
+  .ratingButton:hover {background-color: #030e62}
+  .reviewInput{
+     width: 600px;
+     height: 100px;
+  }
+  .current-rating{
+    margin-bottom: 25px;
+    max-width: 27px;
+    height: 33px;
+    border: none;
+  }
+ .display{
+  display: flex;
+  flex-direction: row;
+ 
+  
+ }
+ .individual{
+
+  border: 2px solid black;
+
+ }
+  .star{
+    margin: 30px;
+    background-color: aliceblue;
+    border:none;
+    background-color: unset;
+    color:goldenrod;
+    font-size: 3rem;
+  }
+  .rated2{
+   
+    padding: 20px;
+    color: #00010b;
+    border: 2px solid black;
+    margin-left: 30px;
+    width: 400px;
+    background-color: #e5f2b1;
+  }
+  .rated{
+   
+    padding: 20px;
+    color: #00010b;
+  
+    margin-left: 30px;
+  }
+  .parentReview{
+    border: 2px solid black;
+    margin-top: 30px;
+    margin: 35px;
+  }
+  
+  .checked {
+    color: orange;
+  }
+  
+  /* Three column layout */
+  .side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+  }
+  
+  .middle {
+    float: left;
+    width: 70%;
+    margin-top: 10px;
+  }
+  
+  /* Place text to the right */
+  .right {
+    text-align: right;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* The bar container */
+  .bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Individual bars */
+  .bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
+  .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+  .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+  .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+  .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+  
+  /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+  @media (max-width: 400px) {
+    .side, .middle {
+      width: 100%;
+    }
+    /* Hide the right column on small screens */
+    .right {
+      display: none;
+    }
+  }

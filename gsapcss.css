@@ -1,0 +1,39 @@
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(45, 131, 159);
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#position{
+  margin-top: 400px;
+}
+
+#svg {
+  position: fixed;
+  top: 600px;
+  left: 230px;
+
+  width: 1500px;
+  height: 800px;
+}
+
+#path1 {
+  fill: #2196F3;
+ 
+}
+
+#path2 {
+  fill: #51d5ce;
+}
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px;
+}
+

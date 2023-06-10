@@ -1,0 +1,111 @@
+.boss{
+    background-color: rgb(1, 55, 89);
+}
+.DisscussionTitle{
+    text-align: center;
+    color: rgb(1, 42, 57);
+}
+
+.formdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.top{
+    border: 2px solid black;
+    background-color: rgb(188, 212, 219);
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.nametitle{
+    margin-top: 20px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+.content{
+    margin-left: 15px;
+    width: 600px;
+}
+.likeanddislike{
+    margin-left: 15px;
+}
+.comment{
+    width: 500px;
+    margin-left: 100px;
+    border: 0px solid black;
+    background-color: rgb(203, 254, 235);
+    border-radius: 20px;
+    
+    margin-bottom: 20px;
+}
+.commentbtn{
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+}
+.commentclass{
+    border-radius: 10px;
+    margin: 10px;
+}
+.postinput{
+    width: 400px;
+    height: 80px;
+    margin-bottom: 30px;
+}
+.borderClass{
+    border: 2px solid black;
+    background-color: rgb(210, 222, 228);
+    margin-left: 70px;
+    border-radius: 20px;
+    margin-right: 100px;
+    margin-top: 40px;
+  
+}
+.commentclass{
+    width: 250px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+.commentContent{
+    margin: 10px;
+    margin-left: 10px;
+    
+}
+.indicomment{
+   border: 0px solid black;
+   border-radius: 10px;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   background-color: rgb(245, 248, 251);
+   color: rgb(14, 0, 0);
+
+}
+.likebtn{
+   color: white;
+   background-color: rgb(33, 78, 176);
+   border-radius: 15px;
+}
+.dislikebtn{
+    color: white;
+    background-color: rgb(0, 5, 16);
+    border-radius: 15px;
+
+}
+.likecnt{
+    margin-bottom: 25px;
+    max-width: 50px;
+    height: 33px;
+    border: none; 
+    margin-left: 30px;
+  }
+.postbutton{
+    border-radius: 20px;
+    background-color: rgb(2, 2, 74);
+    color: white;
+    margin-bottom: 20px;
+}
+.parentpost{
+    margin-left: 30px;
+    margin-top: 30px;
+}
