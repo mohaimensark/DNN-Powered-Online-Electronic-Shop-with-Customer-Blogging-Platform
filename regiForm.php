@@ -8,20 +8,25 @@ if (isset($_POST['sign_up'])) {
     $password = $_POST['password'];
     $c_password = $_POST['c_password'];
     $birthday = $_POST['birthday'];
-
+    $username = $_POST['username'];
+  //  echo $username;
     $email_check = mysqli_query($link, "SELECT * FROM user WHERE email='$email';");
     if (mysqli_num_rows($email_check) == 0) {
         if (strlen($password) > 5) {
             if ($password == $c_password) {
                 $password = md5($password);
-                $query = "INSERT INTO `user`(`name`, `email`, `password`,`rating`,`DateOfBirth`) VALUES ('$name','$email','$password',0,'$birthday');";
+                $query = "INSERT INTO `user`(`name`, `email`, `password`, `rating`, `review`, `DateOfBirth`, `username`) VALUES ('$name','$email','$password',-1,'','$birthday','$username')";
+                
                 $result = mysqli_query($link, $query);
                 if ($result) {
+                    echo $username;
                     $q = mysqli_query($link, "SELECT * FROM `user` WHERE `email`='$email';");
                     $rr = mysqli_fetch_assoc($q);
                     $user_id = $rr['user_id'];
                     $_SESSION['user_login'] = $user_id;
                     header('location:index.php');
+                }else{
+                    echo 'not worked';
                 }
             } else {
                 $password_not_match = "password doesn't matched";
@@ -47,6 +52,7 @@ if (isset($_POST['sign_up'])) {
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/scss/main.css">
     <link rel="stylesheet" href="styles/signupFormSt.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -68,6 +74,13 @@ if (isset($_POST['sign_up'])) {
                         } ?>" required>
                     </div>
                     <div class="form-item">
+                        <label for="username">Enter Username</label>
+                        <input type="text" name="username" id="username" placeholder="username" value="<?php if (isset($username)) {
+                            echo $username;
+                        } ?>" autocomplete="off" required>
+                        <h6 id="displaying"></h6>
+                    </div>
+                    <div class="form-item">
                         <label for="email">Enter Email</label>
                         <input type="email" name="email" id="email" placeholder="Email" value="<?php if (isset($email)) {
                             echo $email;
@@ -77,21 +90,17 @@ if (isset($_POST['sign_up'])) {
                     <div class="form-item">
                         <label for="birthday">Birthday:</label>
                         <input name="birthday" type="date" id="birthday" name="birthday">
-
+                     
                     </div>
                     <div class="form-item">
                         <label for="password">Enter Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" value="<?php if (isset($password)) {
-                            echo $password;
-                        } ?>" required>
+                        <input type="password" name="password" id="password" placeholder="Password" value="" required>
 
                     </div>
                     <div class="form-item">
                         <label for="password">Confirm Password</label>
                         <input type="password" name="c_password" id="confirmPassword" class="form-control"
-                            placeholder="Confirm Password" value="<?php if (isset($c_password)) {
-                                echo $c_password;
-                            } ?>" required>
+                            placeholder="Confirm Password" value="" required>
 
                     </div>
                    <!-- <div class="form-group">
@@ -131,6 +140,37 @@ if (isset($_POST['sign_up'])) {
             <img src="images/svg/image.svg" alt="Illustration-People-bag" />
         </div>
     </div>
+    <script>
+        $("#username").on("keyup", function(e) {
+                    //  e.preventDefault();
+
+
+
+                    var term = $(this).val();
+
+                    console.log(term);
+
+
+                    $.ajax({
+                        url: "search.php",
+                        type: "POST",
+                        data: {
+                            search: term
+                        },
+                        success: function(data) {
+
+
+                            $("#displaying").html(data);
+
+
+
+                        }
+                    });
+
+
+                });
+          
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

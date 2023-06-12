@@ -15,10 +15,11 @@ $insert = "UPDATE `user` SET `rating`='$rating',`review`='$review' WHERE `user_i
 
 if (mysqli_query($link, $insert)) {
     // echo 1;
-    $average = "SELECT AVG(`rating`) AS avg FROM `user`";
+    $average = "SELECT AVG(`rating`) AS avg FROM `user` where `rating`>=0";
 
     $row = mysqli_query($link, $average);
     $res = mysqli_fetch_assoc($row);
+    $actrat = floatval($res['avg']);
     $avgr =intval(round($res['avg']));
     // $output = '<div class="container">';
     // $xx=$output;
@@ -29,7 +30,7 @@ if (mysqli_query($link, $insert)) {
     // $output.='</div>';
      
 
-    echo $avgr;
+    echo $actrat;
 
     //  $row = $result->fetch_assoc();
     //  $averageValue = $row['average_value'];

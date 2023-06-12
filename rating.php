@@ -132,17 +132,18 @@ if (isset($_SESSION['user_login'])) {
 
     <br><br>
 
-    <div class="rated2">
+    <div class="rated2" id = "finres">
         <h1>Current Rating</h1>
-        <div class="starr" id="finres">
+        <div class="starr">
             <?php
-            $average = "SELECT AVG(`rating`) AS avg FROM `user`";
+            $average = "SELECT AVG(`rating`) AS avg FROM `user` where `rating`>=0";
 
             $row = mysqli_query($link, $average);
             $res = mysqli_fetch_assoc($row);
+            $actrat = floatval($res['avg']);
             $avgr = intval(round($res['avg']));
-
-            $output = '';
+            
+            $output = '<h4> '.$actrat.' <h4>';
             while ($avgr--) {
                 $output .= '<span class="fa fa-star checked"></span>';
             }
@@ -153,6 +154,7 @@ if (isset($_SESSION['user_login'])) {
                 $rem--;
                 $output .= '<span class="fa fa-star"></span>';
             }
+             $output .='</div>';
             echo $output;
             ?>
         </div>
@@ -188,8 +190,9 @@ if (isset($_SESSION['user_login'])) {
             <?php
 
             require_once './dbconn.php';
+            $pvt = -1;
 
-            $que = "SELECT * FROM `user`";
+            $que = "SELECT * FROM `user` where `rating`>=0";
 
             $row = mysqli_query($link, $que);
             //   $res = mysqli_fetch_assoc($row);
@@ -281,11 +284,18 @@ if (isset($_SESSION['user_login'])) {
                     rating: rating
                 },
                 success: function (data) {
-                    if (data > 0) {
-
+                    if (data) {
+                     
+                        
                         var output = '<div class="starr" id="finres">';
-                        var x = data;
+                        output+='<h1>Current Rating</h1>';
+                        output+='<h4>';
+                        output+= data;
+                        output+='<h4>';
+                      
+                        var x = parseInt(data);
                         var y = 5 - x;
+                        
                         while (x--) {
                             output += '<span class="fa fa-star checked"></span>';
                         }

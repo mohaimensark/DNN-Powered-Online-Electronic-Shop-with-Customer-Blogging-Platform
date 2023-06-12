@@ -5,7 +5,7 @@ $review = $_POST["review"];
 $rating = $_POST["rating"];
 
 
-$que = "SELECT * FROM `user`";
+$que = "SELECT * FROM `user` where `rating`>=0";
 
 
 
