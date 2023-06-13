@@ -160,7 +160,7 @@ if (isset($_SESSION['user_login'])) {
         </div>
 
     </div>
-
+    <!-- var input = triggered.parentElement.parentElement.children[2]; -->
     <div class="titler">
         <h1>Rate Us</h1>
         <div class="container">
@@ -291,7 +291,7 @@ if (isset($_SESSION['user_login'])) {
                         output+='<h1>Current Rating</h1>';
                         output+='<h4>';
                         output+= data;
-                        output+='<h4>';
+                        output+='</h4>';
                       
                         var x = parseInt(data);
                         var y = 5 - x;

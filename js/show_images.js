@@ -44,7 +44,7 @@ var model = undefined;
 
 async function initialize() {
   model = await tf.loadLayersModel("model/model.json");
-  console.log(model);
+ // console.log(model);
 }
 
 initialize();
@@ -89,7 +89,7 @@ async function predict() {
 
   // console.log(maxx_idx)
 
-  predResult.innerHTML = "The name of the object is " + idx_to_label[maxx_idx];
+  predResult.innerHTML = "The name of the object is " + idx_to_label[maxx_idx] + ". And the accuracy is "+ 100*maxx;
   show(predResult);
 }
 

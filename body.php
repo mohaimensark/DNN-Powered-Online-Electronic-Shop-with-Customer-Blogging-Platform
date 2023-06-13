@@ -101,9 +101,6 @@ $user_id = 0;
           <li class="nav-item">
             <a class="nav-link" href="#newest">Newest Arrival</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#top">Top sale</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -290,87 +287,7 @@ $user_id = 0;
   </section>
   <!-- Newest end here -->
 
-  <!-- Top start here -->
-  <section class="container product-card" id="top">
-    <div class="cat1Heading d-flex justify-content-between">
-      <h3>Top Sale</h3>
-    </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <?php
-
-      $nw = mysqli_query($link, "SELECT products.product_id,`product_title`,`product_price`,`product_image` FROM products INNER JOIN
-              (SELECT `p_id`,SUM(qty) as sm FROM `orders` GROUP BY `p_id`
-              ORDER BY sm DESC
-              LIMIT 3)as dt
-              on products.product_id=dt.p_id
-              ;");
-
-      $hww = mysqli_fetch_assoc($nw);
-      while ($hww) { ?>
-        <div class="col-lg-4 col-md-6 col-sm-12">
-          <div class="product-bg">
-            <div class="card h-100 shadow p-3 mb-5 bg-body rounded">
-              <img src="admin/images/<?php echo $hww['product_image'] ?>" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <?php echo $hww['product_title']; ?>
-                </h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-              </div>
-              <div class="d-flex justify-content-between pCardPrice">
-                <h4>Price:</h4>
-                <h4>
-                  <?php echo $hww['product_price']; ?>
-                </h4>
-                <!-- <div>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                </div> -->
-              </div>
-
-              <div class="card-footer p-1">
-                <form action="" class="form-submit">
-                  <input type="hidden" class="pqty" value="1">
-                  <input type="hidden" class="pid" value="<?= $hww['product_id'] ?>">
-                  <input type="hidden" class="pname" value="<?= $hww['product_title'] ?>">
-                  <input type="hidden" class="pprice" value="<?= $hww['product_price'] ?>">
-                  <input type="hidden" class="pimage" value="<?= $hww['product_image'] ?>">
-                  <?php
-                  if ($user_id > 0) { ?>
-                    <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-                      cart</button>
-                    <?php
-                  } else { ?>
-                    <button class="btn btn-info btn-block addItemBtn disabled"><i
-                        class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-                      cart</button>
-                    <?php
-                  }
-                  ?>
-
-
-
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <?php
-        $hww = mysqli_fetch_assoc($nw);
-      }
-      ?>
-
-
-    </div>
-
-  </section>
-  <!-- Newest end here -->
-
+ 
 
   <?php
   $info = mysqli_query($link, "SELECT * FROM `categories`;");
