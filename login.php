@@ -2,8 +2,13 @@
 require_once './dbconn.php';
 session_start();
 if (isset($_SESSION['user_login'])) {
+    
     header('location:index.php');
 }
+if (isset($_COOKIE['rememberMe'])) {
+    header('location:index.php');
+}
+
 if (isset($_POST['login'])) {
 
     $email = $_POST['email'];
@@ -15,7 +20,16 @@ if (isset($_POST['login'])) {
         if ($row['password'] == md5($password)) {
             $user_id = $row['user_id'];
             $_SESSION['user_login'] = $user_id;
-            header('location:index.php');
+            if(isset($_POST['rememberMe'])) {
+              // echo 'checked';
+            
+              $userId = $user_id; // Replace with the actual user ID
+            //   $rememberToken = generateRememberToken(); // Replace with your token generation logic
+              setcookie('rememberMe' , true, time() + (30 * 24 * 60 * 60), '/');
+          
+            
+            }
+           header('location:index.php');
         } else {
             $wrong_password = "This password is wrong";
         }
@@ -69,7 +83,11 @@ if (isset($_POST['login'])) {
                     </div>
                     <br>
                     <div>
-                        <input class="btn btn-success" type="submit" value="Login" name="login">
+                    <input type="checkbox" name="rememberMe" id="rememberMeCheckbox">
+                         Remember Me
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" style="margin-left:120px" type="submit" value="Login" name="login">
                     </div>
                 </form>
 

@@ -18,7 +18,7 @@ if (!isset($_SESSION['aduser_login'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Online Shop</title>
+  <title>E-SHOP</title>
   <style>
     .content {
       min-height: 410px;
@@ -63,7 +63,7 @@ if (!isset($_SESSION['aduser_login'])) {
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
 
-        <a class="navbar-brand" href="index.php">Online Shop</a>
+        <a class="navbar-brand text-danger" href="index.php">Online Shop</a>
         <a class="navbar-brand" href="adminlogout.php">Logout</a>
 
       </div>

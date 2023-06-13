@@ -1,17 +1,17 @@
 <?php
 session_start();
 require_once './dbconn.php';
-$user_id = 0;
+$user_id = 0; 
+  if (isset($_SESSION['user_login'])) {
+    $user_id = $_SESSION['user_login'];
+    $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
+    $taker = mysqli_fetch_assoc($take);
+    $name = $taker['name'];
+    $splitter = " ";
+    $pieces = explode($splitter, $name);
+    //SELECT * FROM `user_info` WHERE user_id='1';
+  }
 
-if (isset($_SESSION['user_login'])) {
-  $user_id = $_SESSION['user_login'];
-  $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
-  $taker = mysqli_fetch_assoc($take);
-  $name = $taker['name'];
-  $splitter = " ";
-  $pieces = explode($splitter, $name);
-  //SELECT * FROM `user_info` WHERE user_id='1';
-}
 
 ?>
 <!DOCTYPE html>
@@ -119,14 +119,14 @@ if (isset($_SESSION['user_login'])) {
               ?>
             </ul>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="gsapAnimation.php">Gsap Animation</a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="detect.php">Classification</a>
           </li>
-    
-         
+
+
           <li class="nav-item">
             <a class="nav-link" href="#about-us">About us</a>
           </li>
@@ -458,17 +458,16 @@ if (isset($_SESSION['user_login'])) {
 
       </div>
       <?php
-      if ($user_id > 0 && $total_products >3) { ?>
+      if ($user_id > 0 && $total_products > 3) { ?>
         <div>
           <a href="categories.php?id=<?php echo base64_encode($category_id); ?>"
             class="cat1Heading d-flex justify-content-between"><i class=""></i>see more</a>
         </div>
         <?php
-      }else if($user_id>0 && $total_products==0){ ?>
-        <div
-          class="cat1Heading d-flex justify-content-between"><i class=""></i>No more products available</a>
-      </div>
-    <?php  }
+      } else if ($user_id > 0 && $total_products == 0) { ?>
+          <div class="cat1Heading d-flex justify-content-between"><i class=""></i>No more products available</a>
+          </div>
+      <?php }
       ?>
     </section>
 
@@ -479,6 +478,7 @@ if (isset($_SESSION['user_login'])) {
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
 
   <script type="text/javascript">
     $(document).ready(function () {

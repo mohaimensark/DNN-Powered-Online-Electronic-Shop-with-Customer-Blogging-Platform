@@ -80,7 +80,7 @@ require_once './dbconn.php';
     </tbody>
   </table>
 
-  <a href="profile.php" class="btn btn-danger">Return to Profile</a>
+  <a href="profile.php" class="btn btn-primary">Return to Profile</a>
 
   </div>
   </div>
