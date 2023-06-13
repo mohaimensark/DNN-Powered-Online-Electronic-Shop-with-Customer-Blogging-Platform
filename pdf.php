@@ -56,13 +56,12 @@
 
     <body>
     <div>
-      <h4>LOGO</h4>
-      <h2>NO SHOP</h2>
+      <h2>E - SHOP</h2>
      </div>
     
      <div style="width:60%s">
-     <h4>Shipping Address</h4>
-     <table class="table table-bordered">
+     <h4 style="margin-left: 150px">Shipping Address: </h4>
+     <table class="table table-bordered " style="margin-left: 150px">
      <tr>
          <td>ID</td>
          <td>'. $user_id.'</td>
@@ -102,7 +101,7 @@
 </div>
 
       <br><br>
-        <h2>Invoice</h2>
+        <h2 style="margin-top: 120px">Invoice</h2>
         <table>
             <thead>
                 <tr>

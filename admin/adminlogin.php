@@ -46,21 +46,21 @@
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="styles/adminLogin.css">
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
 
   </head>
-  <body style="background:#f5f5f5">
+  <body class="adminlogin">
     
   <div class="container animate__animated animate__shakeX">
       <!--https://animate.style/-->
 
            
            <div>
-                <h1  class="col-lg-12 text-center">Welcome to Online Shopping System</h1>
+                <h1  class="col-lg-12 text-center text">Welcome to Online Shopping System</h1>
            </div>
         <div class="row">
         <h2 class="text-center">Admin Login Form</h2>
@@ -79,7 +79,7 @@
                 </div>
                 <br>
                 <div>
-					          <input class="btn btn-info pull-right" type="submit" value="Login" name="login">
+					          <input class="btn btn-info pull-right btn" type="submit" value="Login" name="login">
 			          </div>
             </form>
             </div>

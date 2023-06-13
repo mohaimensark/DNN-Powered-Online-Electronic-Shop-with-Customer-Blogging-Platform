@@ -9,10 +9,11 @@
 ?>
 
 <h3>All Users</h3>
+<link rel="stylesheet" href="styles/adminDashboard.css">
 
 <div class="table-responsive">
 
-  <table id='data' class="table table-striped table-hover table-bordered">
+  <table id='data' class="table table-striped table-hover table-bordered tabled">
     <thead>
       <tr>
         <th>ID</th>

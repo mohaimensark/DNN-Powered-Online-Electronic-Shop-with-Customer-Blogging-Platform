@@ -42,7 +42,6 @@
              <a href="delete-product.php?id=<?php echo base64_encode($row['product_id']); ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Delete</a>
         </td>
 
-
       </tr>
       <?php
       }

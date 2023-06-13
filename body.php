@@ -21,7 +21,7 @@ if (isset($_SESSION['user_login'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>No shop</title>
+  <title>E-SHOP</title>
   <script src="https://kit.fontawesome.com/cc0fc94170.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -39,7 +39,7 @@ if (isset($_SESSION['user_login'])) {
   <div class="header-sec">
     <div class="row">
       <div class="col-md-9 col-sm-9 brand-logo">
-        <p><span class="no-same no-shop">ELECTRONIC </span><span class="no-same logo-shop">SHOP</span></p>
+        <p><span class="no-same no-shop">E-</span><span class="no-same logo-shop">SHOP</span></p>
       </div>
 
       <div class="col-md-2 col-sm-2" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
@@ -119,9 +119,9 @@ if (isset($_SESSION['user_login'])) {
               ?>
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="gsapAnimation.php">Gsap Animation</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="detect.php">Classification</a>
           </li>
@@ -160,14 +160,14 @@ if (isset($_SESSION['user_login'])) {
           <div id="myCartBtn" class="myCartMenu">
             <a href="mycart.php">
               <i class="fas fa-shopping-cart"></i>
-              <span id="cart-item" class="badge badge-danger"></span>
+              <span id="cart-item" class="badge badge-success"></span>
             </a>
           </div>
           <?php
         } else { ?>
           <div id="myCartBtn" class="myCartMenu">
             <i class="fas fa-shopping-cart"></i>
-            <span id="cart-item" class="badge badge-danger"></span>
+            <span id="cart-item" class="badge badge-success"></span>
           </div>
           <?php
         }
@@ -458,13 +458,17 @@ if (isset($_SESSION['user_login'])) {
 
       </div>
       <?php
-      if ($user_id > 0) { ?>
+      if ($user_id > 0 && $total_products >3) { ?>
         <div>
           <a href="categories.php?id=<?php echo base64_encode($category_id); ?>"
             class="cat1Heading d-flex justify-content-between"><i class=""></i>see more</a>
         </div>
         <?php
-      }
+      }else if($user_id>0 && $total_products==0){ ?>
+        <div
+          class="cat1Heading d-flex justify-content-between"><i class=""></i>No more products available</a>
+      </div>
+    <?php  }
       ?>
     </section>
 

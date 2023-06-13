@@ -6,13 +6,13 @@
             <div class="col-lg-3 col-md-6 col-sm-12 text-white">
                 <h4 class="mb-4 mt-4">ABOUT US</h4>
                 <p class="py-1">
-                <i class="fas fa-map-marker-alt"></i><span class="ps-4">Chattogram, Bangladesh</span>
+                <i class="fas fa-map-marker-alt"></i><span class="ps-4">University of Chittagong, Chattogram, Bangladesh</span>
                 </p>
                 <p class="py-1">
-                <i class="fas fa-phone-alt"></i><span class="ps-4">123456</span>
+                <i class="fas fa-phone-alt"></i><span class="ps-4">01752615622</span>
                 </p>
                 <p class="py-1">
-                <i class="fas fa-envelope"></i><span class="ps-4">abc@gmail.com</span>
+                <i class="fas fa-envelope"></i><span class="ps-4">shortestPath@gmail.com</span>
                 </p>
             </div>
 
@@ -28,12 +28,16 @@
                 </p>
                 <p class="py-1">
                     <i class="fas fa-circle fa-xs"></i>
+                    <a class="text-white ps-3" href="https://www.linkedin.com/in/mohaimen-sarker/">Contract with us</a>
+                </p>
+                <p class="py-1">
+                    <i class="fas fa-circle fa-xs"></i>
                     <a class="text-white ps-3" href="#about-us">Terms & conditions</a>
                 </p>
                 
             </div>
         </div>
         </div>
-        <p class="text-center text-white pt-4">Copyright ©2021 All rights reserved</p>
+        <p class="text-center text-white pt-4">Copyright ©2023 All rights reserved</p>
     </footer>
     <!-- Footer END  -->

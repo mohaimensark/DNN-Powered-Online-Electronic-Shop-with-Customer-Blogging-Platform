@@ -29,7 +29,7 @@ body{
     font-weight: 700;
 }
 .no-shop{
-    color: rgb(250, 77, 9);
+    color: rgb(9, 37, 250);
 }
 .logo-shop {
     color: rgb(55, 60, 77);
@@ -75,7 +75,7 @@ form.search-box-style button {
     padding-right: 15px;
 }
 .myCartMenu{
-    background-color: rgb(250, 77, 9);
+    background-color: rgb(61, 4, 111);
     padding: 8px 10px 8px 20px;
     display: inline;
 }

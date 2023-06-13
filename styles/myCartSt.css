@@ -6,7 +6,7 @@ body{
 }
 .header-sec {
     padding: 0px 3%;
-    background-color: white;
+    background-color: rgb(216, 245, 247);
 }
 .header-sec a {
     text-decoration: none;
@@ -29,10 +29,10 @@ body{
     font-weight: 700;
 }
 .no-shop{
-    color: rgb(250, 77, 9);
+    color: rgb(147, 2, 2);
 }
 .logo-shop {
-    color: rgb(55, 60, 77);
+    color: rgb(9, 3, 93);
 }
 input:focus{
     outline: none;
@@ -43,7 +43,7 @@ form.search-box-style input[type=text] {
     border: 2px solid rgb(55, 60, 77);
     float: left;
     width: 30%;
-    background: rgba(132, 229, 192, 0.418);
+    background: rgba(145, 229, 132, 0.418);
 }
 form.search-box-style button {
     float: left;
@@ -56,15 +56,17 @@ form.search-box-style button {
     border-left: none; 
 }
 .navbar-bg {
-    background-color: rgb(1, 55, 89);
+    background-color: rgb(1, 1, 29);
 }
 .navbar {
     margin-top: -10px;
     padding: 0px 1%;
+
     margin-bottom: 1px;
 }
 .nav-link{
     margin: 0px 20px;
+    color: white;
 }
 .first-bar{
     background-color: red;
@@ -75,7 +77,7 @@ form.search-box-style button {
     padding-right: 15px;
 }
 .myCartMenu{
-    background-color: rgb(250, 77, 9);
+    background-color: rgb(4, 13, 115);
     padding: 8px 10px 8px 20px;
     display: inline;
 }
@@ -115,8 +117,8 @@ form.search-box-style button {
 
 /*------------Footer START-------------*/
 #about-us {
-    height: 350px;
-    background-color: rgba(55, 60, 77);
+    height: 420px;
+    background-color: rgb(56, 4, 4);
 }
 #about-us a {
     text-decoration: none;

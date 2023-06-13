@@ -32,7 +32,7 @@ if ($user_id == 0) { ?>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>No shop</title>
+  <title>E-SHOP</title>
   <script src="https://kit.fontawesome.com/cc0fc94170.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
@@ -105,29 +105,9 @@ if ($user_id == 0) { ?>
                 <a class="" href="index.php">Home</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#newest">Newest Arrival</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#top">Top sale</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Category
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php
-                $tb_pinfo = mysqli_query($link, "SELECT * FROM `categories`");
-                while ($row3 = mysqli_fetch_assoc($tb_pinfo)) { ?>
-                  <li><a class="dropdown-item" href="#<?php echo ucwords($row3['cat_title']); ?>"><?php echo ucwords($row3['cat_title']); ?></a></li>
-                <?php
-                }
-                ?>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about-us">About us</a>
-            </li>
+          
+          
+           
           </ul>
           <div id="myCartBtn" class="myCartMenu">
             <a href="mycart.php">

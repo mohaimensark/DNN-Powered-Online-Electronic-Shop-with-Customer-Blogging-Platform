@@ -30,7 +30,7 @@ $allItems = implode(', ', $items);
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>No shop</title>
+  <title>E_SHOP</title>
   <script src="https://kit.fontawesome.com/cc0fc94170.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
@@ -103,29 +103,7 @@ $allItems = implode(', ', $items);
                             <a class="" href="index.php">Home</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#newest">Newest Arrival</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#top">Top sale</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Category
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php
-                            $tb_pinfo = mysqli_query($link, "SELECT * FROM `categories`");
-                            while ($row3 = mysqli_fetch_assoc($tb_pinfo)) { ?>
-                                <li><a class="dropdown-item" href="#<?php echo ucwords($row3['cat_title']); ?>"><?php echo ucwords($row3['cat_title']); ?></a></li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about-us">About us</a>
-                    </li>
+                   
                 </ul>
                 <div id="myCartBtn" class="myCartMenu">
                     <a href="mycart.php">
@@ -143,7 +121,7 @@ $allItems = implode(', ', $items);
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Complete your order!</h4>
-        <div class="jumbotron p-3 mb-2 text-center">
+        <div class="jumbotron p-3 mb-2 text-center text-success">
           <h6 class="lead"><b>Product(s) : </b><?= $allItems; ?></h6>
           <h6 class="lead"><b>Delivery Charge : </b>Free</h6>
           <h5><b>Total Amount Payable : </b><?= number_format($grand_total,2) ?>/-</h5>
@@ -167,14 +145,15 @@ $allItems = implode(', ', $items);
           <h6 class="text-center lead">Select Payment Mode</h6>
           <div class="form-group">
             <select name="pmode" class="form-control">
-              <option value="" selected disabled>-Select Payment Mode-</option>
+              <option value="" selected disabled>-Select Payment Method-</option>
               <option value="cod">Cash On Delivery</option>
               <option value="bKash">bKash</option>
               <option value="Nagad">Nagad</option>
+              <option value="Nagad">Upay</option>
             </select>
           </div>
           <div class="form-group">
-            <input type="submit" name="submit" value="Place Order" class="btn btn-danger"><!--btn-block-->
+            <input type="submit" name="submit" value="Place Order" class="btn btn-success" style="margin-left: 210px"><!--btn-block-->
 
           </div>
         </form>

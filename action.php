@@ -126,15 +126,15 @@
       $sql= mysqli_query($link,"DELETE FROM cart WHERE user_id='$user_id';");
 
 	  $data .= '<div class="text-center">
-								<h1 class="display-4 mt-2 text-danger">Thank You!</h1>
+								<h1 class="display-4 mt-2 text-success">Thank You!</h1>
 								<h2 class="text-success">Your Order Placed Successfully!</h2>
-								<h4 class="bg-danger text-light rounded p-2">Items Purchased : ' . $products . '</h4>
+								<h4 class="bg-success text-light rounded p-2">Items Purchased : ' . $products . '</h4>
                                 <h4>Your Address: ' . $city.','.$subdistrict.','.$district. '</h4>
 								<h4>Your Phone : ' . $phone . '</h4>
 								<h4>Total Amount Paid : ' . number_format($grand_total,2) . '</h4>
 								<h4>Payment Mode : ' . $pmode . '</h4>
 								<br> <br>
-								<a href="pdf.php" class="btn btn-danger" target="_blank">Invoice Pdf</a>
+								<a href="pdf.php" class="btn btn-primary" target="_blank">Invoice Pdf</a>
 						  </div>';
 	  echo $data;
 	}

@@ -1,0 +1,37 @@
+.adminlogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    overflow: hidden;
+}
+
+@keyframes animatedBackground {
+    0% { background-color: rgb(239, 243, 242); }
+    50% { background-color: rgb(42, 169, 232); }
+    100% { background-color: rgb(231, 238, 237); }
+}
+
+.btn {
+    background-color: #000000;
+    align-items: center;
+    margin-right: 150px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.adminlogin::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(-45deg, rgb(2, 41, 61), rgb(174, 201, 195), rgb(6, 41, 58));
+    animation: animatedBackground 10s ease-in-out infinite;
+}
