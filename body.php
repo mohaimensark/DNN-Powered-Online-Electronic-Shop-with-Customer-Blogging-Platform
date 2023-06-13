@@ -125,9 +125,7 @@ if (isset($_SESSION['user_login'])) {
           <li class="nav-item">
             <a class="nav-link" href="detect.php">Classification</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="api/index.php?GET">Api</a>
-          </li>
+    
          
           <li class="nav-item">
             <a class="nav-link" href="#about-us">About us</a>

@@ -10,7 +10,7 @@ $user_data = [];
 
 
 
-    $search_val = $_POST["search"];
+    $search_val = $_POST["uname"];
 
 
 

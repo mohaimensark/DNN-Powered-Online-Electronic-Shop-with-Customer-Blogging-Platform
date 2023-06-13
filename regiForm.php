@@ -155,7 +155,7 @@ if (isset($_POST['sign_up'])) {
                         url: "search.php",
                         type: "POST",
                         data: {
-                            search: term
+                            uname: term
                         },
                         success: function(data) {
 
