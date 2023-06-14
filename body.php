@@ -1,16 +1,16 @@
 <?php
 session_start();
 require_once './dbconn.php';
-$user_id = 0; 
-  if (isset($_SESSION['user_login'])) {
-    $user_id = $_SESSION['user_login'];
-    $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
-    $taker = mysqli_fetch_assoc($take);
-    $name = $taker['name'];
-    $splitter = " ";
-    $pieces = explode($splitter, $name);
-    //SELECT * FROM `user_info` WHERE user_id='1';
-  }
+$user_id = 0;
+if (isset($_SESSION['user_login'])) {
+  $user_id = $_SESSION['user_login'];
+  $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
+  $taker = mysqli_fetch_assoc($take);
+  $name = $taker['name'];
+  $splitter = " ";
+  $pieces = explode($splitter, $name);
+  //SELECT * FROM `user_info` WHERE user_id='1';
+}
 
 
 ?>
@@ -30,7 +30,17 @@ $user_id = 0;
 
   <link rel="stylesheet" href="styles/indexSt.css">
   <link rel="stylesheet" href="styles/myCartSt.css">
+  <style>
+    .dropdown-submenu {
+      position: relative;
+    }
 
+    .dropdown-submenu .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+    }
+  </style>
 </head>
 
 <body>
@@ -98,30 +108,46 @@ $user_id = 0;
               <a class="" href="index.php">Home</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#newest">Newest Arrival</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Category
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <?php
-              $tb_pinfo = mysqli_query($link, "SELECT * FROM `categories`");
-              while ($row3 = mysqli_fetch_assoc($tb_pinfo)) { ?>
-                <li><a class="dropdown-item" href="#<?php echo ucwords($row3['cat_title']); ?>"><?php echo ucwords($row3['cat_title']); ?></a></li>
-                <?php
-              }
-              ?>
-            </ul>
-          </li>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Explore </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#newest">Newest Arrival</a>
+                </li>
+
+                <li><a class="dropdown-item" href="#"> Category &raquo; </a>
+
+                  <ul class="submenu dropdown-menu">
+
+
+                    <?php
+                    $tb_pinfo = mysqli_query($link, "SELECT * FROM `categories`");
+                    while ($row3 = mysqli_fetch_assoc($tb_pinfo)) { ?>
+                      <li><a class="dropdown-item" href="#<?php echo ucwords($row3['cat_title']); ?>"><?php echo ucwords($row3['cat_title']); ?></a></li>
+                      <?php
+                    }
+                    ?>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="gsapAnimation.php">Gsap Animation</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="detect.php">Classification</a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+      
           <li class="nav-item">
             <a class="nav-link" href="gsapAnimation.php">Gsap Animation</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="detect.php">Classification</a>
           </li>
+         
 
 
           <li class="nav-item">
@@ -215,6 +241,8 @@ $user_id = 0;
   <br><br>
 
 
+
+
   <!-- Newest start here -->
   <section class="container product-card" id="newest">
     <div id="message"></div>
@@ -223,7 +251,7 @@ $user_id = 0;
     </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <?php
-      $new = mysqli_query($link, "SELECT * FROM `products` ORDER BY `product_id` DESC LIMIT 3;");
+      $new = mysqli_query($link, "SELECT * FROM `products` ORDER BY `product_id` DESC LIMIT 6;");
       $hw = mysqli_fetch_assoc($new);
       while ($hw) { ?>
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -234,21 +262,16 @@ $user_id = 0;
                 <h5 class="card-title">
                   <?php echo $hw['product_title']; ?>
                 </h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <p class="card-text">
+                  <?php echo $row['description'] ?>
+                </p>
               </div>
               <div class="d-flex justify-content-between pCardPrice">
                 <h4>Price:</h4>
                 <h4>
                   <?php echo $hw['product_price']; ?>
                 </h4>
-                <!-- <div>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                  <i class="fas fa-star ratingColor"></i>
-                </div> -->
+
               </div>
 
               <div class="card-footer p-1">
@@ -287,7 +310,7 @@ $user_id = 0;
   </section>
   <!-- Newest end here -->
 
- 
+
 
   <?php
   $info = mysqli_query($link, "SELECT * FROM `categories`;");
@@ -323,21 +346,16 @@ $user_id = 0;
                   <h5 class="card-title">
                     <?php echo $row['product_title']; ?>
                   </h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                    content. This content is a little bit longer.</p>
+                  <p class="card-text">
+                    <?php echo $row['description'] ?>
+                  </p>
                 </div>
                 <div class="d-flex justify-content-between pCardPrice">
                   <h4>Price:</h4>
                   <h4>
                     <?php echo $row['product_price']; ?>
                   </h4>
-                  <!-- <div>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                  </div> -->
+
                 </div>
 
 
@@ -375,7 +393,7 @@ $user_id = 0;
 
       </div>
       <?php
-      if ($user_id > 0 && $total_products > 3) { ?>
+      if ($total_products > 3) { ?>
         <div>
           <a href="categories.php?id=<?php echo base64_encode($category_id); ?>"
             class="cat1Heading d-flex justify-content-between"><i class=""></i>see more</a>
@@ -393,11 +411,73 @@ $user_id = 0;
   }
   ?>
 
+
+
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+  // Multiple dropdown javascript
   <script type="text/javascript">
+    //	window.addEventListener("resize", function() {
+    //		"use strict"; window.location.reload(); 
+    //	});
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+      /////// Prevent closing from click inside dropdown
+      document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      })
+
+
+
+      // make it as accordion for smaller screens
+      if (window.innerWidth < 992) {
+
+        // close all inner dropdowns when parent is closed
+        document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+          everydropdown.addEventListener('hidden.bs.dropdown', function () {
+            // after dropdown is hidden, then find all submenus
+            this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+              // hide every submenu as well
+              everysubmenu.style.display = 'none';
+            });
+          })
+        });
+
+        document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+          element.addEventListener('click', function (e) {
+
+            let nextEl = this.nextElementSibling;
+            if (nextEl && nextEl.classList.contains('submenu')) {
+              // prevent opening link if link needs to open dropdown
+              e.preventDefault();
+              console.log(nextEl);
+              if (nextEl.style.display == 'block') {
+                nextEl.style.display = 'none';
+              } else {
+                nextEl.style.display = 'block';
+              }
+
+            }
+          });
+        })
+      }
+      // end if innerWidth
+
+    });
+  // DOMContentLoaded  end
+  </script>
+  <script type="text/javascript">
+
+
     $(document).ready(function () {
 
       // Send product details in the server

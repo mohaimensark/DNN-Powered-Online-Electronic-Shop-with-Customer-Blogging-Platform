@@ -99,29 +99,7 @@
                 <a class="" href="index.php">Home</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#newest">Newest Arrival</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#top">Top sale</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Category
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php
-                $tb_pinfo = mysqli_query($link, "SELECT * FROM `categories`");
-                while ($row3 = mysqli_fetch_assoc($tb_pinfo)) { ?>
-                  <li><a class="dropdown-item" href="#<?php echo ucwords($row3['cat_title']); ?>"><?php echo ucwords($row3['cat_title']); ?></a></li>
-                <?php
-                }
-                ?>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about-us">About us</a>
-            </li>
+           
           </ul>
           <?php
           if ($user_id > 0) { ?>
@@ -161,17 +139,12 @@
                 <img src="admin/images/<?php echo $roow['product_image'] ?>" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $roow['product_title']; ?></h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><?php echo $roow['description'] ?></p>
                 </div>
                 <div class="d-flex justify-content-between pCardPrice">
+                <h4>Price:</h4>
                   <h4><?php echo $roow['product_price']; ?></h4>
-                  <div>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                    <i class="fas fa-star ratingColor"></i>
-                  </div>
+                
                 </div>
 
 

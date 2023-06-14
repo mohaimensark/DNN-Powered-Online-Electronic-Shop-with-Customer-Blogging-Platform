@@ -49,7 +49,7 @@ if (!isset($_SESSION['aduser_login'])) {
   <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="../js/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/script.js"></script>
-
+  <script type="text/javascript" src="adminShowImage.js"></script>
 
 </head>
 
@@ -86,7 +86,7 @@ if (!isset($_SESSION['aduser_login'])) {
           <a href="index.php?page=adminDashboard" class="list-group-item active">
           <i class="fa fa-dashboard"></i> Dashboard
           </a>
-          <a href="index.php?page=add-user" class="list-group-item"><i class="fa fa-user-plus"></i> ADD USER</a>
+          <a href="addWithClassification.php" class="list-group-item"><i class="fa "></i> Add Product With Classification</a>
           <a href="index.php?page=products" class="list-group-item"><i class="fas fa-list-alt"></i> PRODUCT LIST</a>
           <a href="index.php?page=orders" class="list-group-item"><i class="fas fa-shopping-bag"></i> ORDERS</a>
           <a href="index.php?page=add-product" class="list-group-item"><i class="far fa-plus-square"></i> ADD PRODUCTS</a>
