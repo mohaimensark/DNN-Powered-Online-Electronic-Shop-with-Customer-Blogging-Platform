@@ -73,8 +73,7 @@ if (!isset($_SESSION['aduser_login'])) {
 
     <div class="bodyclass">
 
-        <h1 class="text-primary"><i class="far fa-plus-square"></i> Add Product <small class="lol">Statistics
-                Overview</small></h1>
+        <h1 class="text-primary"><i class="far fa-plus-square"></i> Add Product <small class="lol"> with classification</small></h1>
         <ol class="breadcrumb">
             <li><a href="adminIndex.php?page=adminDashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
             <li><i class="far fa-plus-square"></i> Add Product</a></li>
@@ -195,7 +194,7 @@ if (!isset($_SESSION['aduser_login'])) {
                     </div>
                     <div class="form-group">
                         <input type="submit" name="add-product" value="Add Product"
-                            class="btn btn-primary pull-center" style="margin-left: 180px"/>
+                            class="btn btn-primary pull-center" style="margin-left: 160px"/>
                     </div>
 
 
