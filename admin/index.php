@@ -92,6 +92,7 @@ if (!isset($_SESSION['aduser_login'])) {
           <a href="index.php?page=add-product" class="list-group-item"><i class="far fa-plus-square"></i> ADD PRODUCTS</a>
           <a href="index.php?page=add-category" class="list-group-item"><i class="far fa-plus-square"></i> ADD NEW CATEGORY</a>
           <a href="index.php?page=add-brand" class="list-group-item"><i class="far fa-plus-square"></i> ADD NEW BRAND</a>
+          <a href="index.php?page=showUserFromApi" class="list-group-item"><i class="far fa-plus-square"></i>User List</a>
 
 
         </div>

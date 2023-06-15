@@ -557,10 +557,11 @@ if (isset($_SESSION['user_login'])) {
           }
         });
       });
+    
 
       // Send product details in the server
-      $(".addItemBtn").click(function (e) {
-
+      $(document).on('click', '.addItemBtn', function (e){
+        
         e.preventDefault();
         var $form = $(this).closest(".form-submit");
         var pid = $form.find(".pid").val();
@@ -568,9 +569,9 @@ if (isset($_SESSION['user_login'])) {
         var pprice = $form.find(".pprice").val();
         var pimage = $form.find(".pimage").val();
         //var pcode = $form.find(".pcode").val();
-
+     //   alert(pname);
         var pqty = $form.find(".pqty").val();
-
+        
         $.ajax({
           url: 'action.php',
           method: 'post',

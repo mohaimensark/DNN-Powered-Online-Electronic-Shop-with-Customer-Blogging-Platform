@@ -15,13 +15,13 @@ $rs_result = mysqli_query($link, $sql);
 $output = '';
 $cart_btn = '';
 if ($user_id > 0) { 
-  $cart_btn.='<button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-    cart</button>';
+  $cart_btn.=' <button class="btn btn-info btn-block addItemBtn"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
+  cart</button>';
   
-} else { 
-  $cart_btn.='<button class="btn btn-info btn-block addItemBtn disabled"><i
-      class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
-    cart</button>';
+}else { 
+  $cart_btn.=' <button class="btn btn-info btn-block addItemBtn disabled"><i
+  class="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to
+cart</button>';
  
 }
 
@@ -56,7 +56,7 @@ if ($rs_result) {
             <input type="hidden" class="pqty" value="1">
             <input type="hidden" class="pid" value="' . $row['product_id'] . '">
             <input type="hidden" class="pname" value=" ' . $row['product_title'] . '">
-            <input type="hidden" class="pprice" value="  ' . $row['product_title'] . '">
+            <input type="hidden" class="pprice" value="  ' . $row['product_price'] . '">
             <input type="hidden" class="pimage" value="' . $row['product_image'] . '">
             '.$cart_btn.'
            

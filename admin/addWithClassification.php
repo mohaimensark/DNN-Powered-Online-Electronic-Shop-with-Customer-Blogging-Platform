@@ -195,7 +195,7 @@ if (!isset($_SESSION['aduser_login'])) {
                     </div>
                     <div class="form-group">
                         <input type="submit" name="add-product" value="Add Product"
-                            class="btn btn-primary pull-center" style="margin-left: 360px"/>
+                            class="btn btn-primary pull-center" style="margin-left: 180px"/>
                     </div>
 
 
