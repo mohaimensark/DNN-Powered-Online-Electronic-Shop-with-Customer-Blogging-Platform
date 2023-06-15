@@ -30,7 +30,7 @@ if (isset($_SESSION['user_login'])) {
 
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0/css/bootstrap.min.css"> -->
 
-  
+
   <!-- jQuery -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 
@@ -250,7 +250,7 @@ if (isset($_SESSION['user_login'])) {
 
 
 
->
+  >
 
   <!-- Newest items with pagination start here -->
   <section class="container product-card" id="newest">
@@ -336,12 +336,16 @@ if (isset($_SESSION['user_login'])) {
               if ($i == 1):
                 ?>
                 <li class="page-item active" id="<?php echo $i; ?>">
-                  <button class="page-link " style="margin-left: 10px" ><?php echo $i; ?></button>
+                  <button class="page-link " style="margin-left: 10px">
+                    <?php echo $i; ?>
+                  </button>
                 </li>
                 <?php
               else:
                 ?>
-                <li  class="page-item " style="margin-left: 10px" id="<?php echo $i; ?>"><button class="page-link"><?php echo $i; ?></button>
+                <li class="page-item " style="margin-left: 10px" id="<?php echo $i; ?>"><button class="page-link">
+                    <?php echo $i; ?>
+                  </button>
                 </li>
                 <?php
               endif;
@@ -464,7 +468,7 @@ if (isset($_SESSION['user_login'])) {
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script> -->
   <!-- // Multiple dropdown javascript -->
   <script type="text/javascript">
     //	window.addEventListener("resize", function() {
@@ -522,55 +526,37 @@ if (isset($_SESSION['user_login'])) {
   // DOMContentLoaded  end
   </script>
   <script type="text/javascript">
-    
+
     //pagination jquery
-   
+
 
 
     $(document).ready(function () {
-     
-       $.ajaxSetup({
-    timeout:10000,
-    beforeSend: function(xhr) {
-      //
-    },
-    complete:function(xhr,status) {
-      //
-    },      
-    error: function(xhr, status, err) {
-      switch (status){
-      case 'timeout': {}
-      case 'parseerror': {}
-      case 'abort': {}
-      case 'error': {}
-      default: {}
-      }
-    }
-  });
 
-  $("#pagination li").click(function (e) {
-  e.preventDefault();
 
-  $("#pagination li").removeClass('active');
-  $(this).addClass('active');
-  var pageNum = this.id;
-  var page = parseInt(pageNum);
+      $("#pagination li").click(function (e) {
+        e.preventDefault();
 
- // alert(pageNum);
+        $("#pagination li").removeClass('active');
+        $(this).addClass('active');
+        var pageNum = this.id;
+        var page = parseInt(pageNum);
 
-  $.ajax({
-    url: 'paginations.php',
-    method: 'get',
-    data: {
-      pageno: pageNum,
-    },
-    success: function (response) {
-      // alert(data);
-      $("#replace_page").html(response);
-      //alert(response);
-    }
-  });
-});
+      //   alert(pageNum);
+
+        $.ajax({
+          url: 'paginations.php',
+          method: 'get',
+          data: {
+            pageno: pageNum,
+          },
+          success: function (response) {
+            // alert(data);
+            $("#replace_page").html(response);
+            //alert(response);
+          }
+        });
+      });
 
       // Send product details in the server
       $(".addItemBtn").click(function (e) {
@@ -599,6 +585,7 @@ if (isset($_SESSION['user_login'])) {
           success: function (response) {
             $("#message").html(response);
             //window.scrollTo(0, 0);
+
             load_cart_item_number();
           }
         });

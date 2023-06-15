@@ -18,6 +18,7 @@
       $qr = mysqli_query($link, "SELECT * FROM `cart` WHERE `product_id`='$pid' AND user_id='$user_id';");
       $r=mysqli_fetch_assoc($qr);
       $num = mysqli_num_rows($qr);
+	//  echo '<script>alert("Item added to your cart!")</script>';
 	  
 	  if (!$num) {
         $query = mysqli_query($link, "INSERT INTO `cart`(`product_id`, `product_price`,`qty`,`total_price`,`user_id`) VALUES ('$pid','$pprice','$pqty','$total_price','$user_id');");
