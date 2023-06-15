@@ -28,6 +28,14 @@ if (isset($_SESSION['user_login'])) {
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0/css/bootstrap.min.css"> -->
+
+  
+  <!-- jQuery -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+
+
+
   <link rel="stylesheet" href="styles/indexSt.css">
   <link rel="stylesheet" href="styles/myCartSt.css">
   <style>
@@ -140,14 +148,14 @@ if (isset($_SESSION['user_login'])) {
             </li>
 
           </ul>
-      
+
           <li class="nav-item">
             <a class="nav-link" href="gsapAnimation.php">Gsap Animation</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="detect.php">Classification</a>
           </li>
-         
+
 
 
           <li class="nav-item">
@@ -242,16 +250,17 @@ if (isset($_SESSION['user_login'])) {
 
 
 
+>
 
-  <!-- Newest start here -->
+  <!-- Newest items with pagination start here -->
   <section class="container product-card" id="newest">
     <div id="message"></div>
     <div class="cat1Heading d-flex justify-content-between">
       <h3>Newest Arrival</h3>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="replace_page">
       <?php
-      $new = mysqli_query($link, "SELECT * FROM `products` ORDER BY `product_id` DESC LIMIT 6;");
+      $new = mysqli_query($link, "SELECT * FROM `products` ORDER BY `product_id` DESC LIMIT 3;");
       $hw = mysqli_fetch_assoc($new);
       while ($hw) { ?>
         <div class="col-lg-4 col-md-6 col-sm-12">
@@ -307,9 +316,46 @@ if (isset($_SESSION['user_login'])) {
 
     </div>
 
-  </section>
-  <!-- Newest end here -->
+    <div>
 
+      <?php include('dbconn.php');
+
+      $limit = 3;
+      $sql = "SELECT COUNT(`product_id`) FROM `products`";
+      $rs_result = mysqli_query($link, $sql);
+      $row = mysqli_fetch_row($rs_result);
+      $total_records = $row[0];
+      $total_pages = ceil($total_records / $limit);
+
+      ?>
+
+      <div align="center">
+        <ul class="pagination" id="pagination">
+          <?php if (!empty($total_pages)):
+            for ($i = 1; $i <= $total_pages; $i++):
+              if ($i == 1):
+                ?>
+                <li class="page-item active" id="<?php echo $i; ?>">
+                  <button class="page-link " style="margin-left: 10px" ><?php echo $i; ?></button>
+                </li>
+                <?php
+              else:
+                ?>
+                <li  class="page-item " style="margin-left: 10px" id="<?php echo $i; ?>"><button class="page-link"><?php echo $i; ?></button>
+                </li>
+                <?php
+              endif;
+              ?>
+              <?php
+            endfor;
+          endif;
+          ?>
+        </ul>
+      </div>
+    </div>
+
+
+  </section>
 
 
   <?php
@@ -418,8 +464,8 @@ if (isset($_SESSION['user_login'])) {
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-  // Multiple dropdown javascript
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <!-- // Multiple dropdown javascript -->
   <script type="text/javascript">
     //	window.addEventListener("resize", function() {
     //		"use strict"; window.location.reload(); 
@@ -476,9 +522,55 @@ if (isset($_SESSION['user_login'])) {
   // DOMContentLoaded  end
   </script>
   <script type="text/javascript">
+    
+    //pagination jquery
+   
 
 
     $(document).ready(function () {
+     
+       $.ajaxSetup({
+    timeout:10000,
+    beforeSend: function(xhr) {
+      //
+    },
+    complete:function(xhr,status) {
+      //
+    },      
+    error: function(xhr, status, err) {
+      switch (status){
+      case 'timeout': {}
+      case 'parseerror': {}
+      case 'abort': {}
+      case 'error': {}
+      default: {}
+      }
+    }
+  });
+
+  $("#pagination li").click(function (e) {
+  e.preventDefault();
+
+  $("#pagination li").removeClass('active');
+  $(this).addClass('active');
+  var pageNum = this.id;
+  var page = parseInt(pageNum);
+
+ // alert(pageNum);
+
+  $.ajax({
+    url: 'paginations.php',
+    method: 'get',
+    data: {
+      pageno: pageNum,
+    },
+    success: function (response) {
+      // alert(data);
+      $("#replace_page").html(response);
+      //alert(response);
+    }
+  });
+});
 
       // Send product details in the server
       $(".addItemBtn").click(function (e) {

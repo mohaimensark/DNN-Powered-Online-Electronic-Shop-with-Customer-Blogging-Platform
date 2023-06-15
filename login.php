@@ -83,8 +83,8 @@ if (isset($_POST['login'])) {
                     </div>
                     <br>
                     <div>
-                    <input type="checkbox" name="rememberMe" id="rememberMeCheckbox">
-                         Remember Me
+                    <!-- <input type="checkbox" name="rememberMe" id="rememberMeCheckbox">
+                         Remember Me -->
                     </div>
                     <div>
                         <input class="btn btn-primary" style="margin-left:120px" type="submit" value="Login" name="login">
