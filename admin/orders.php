@@ -1,6 +1,6 @@
 <h1 class="text-primary"><i class="fas fa-shopping-bag"></i> ORDERS <small>Statistics Overview</small></h1>
 <ol class="breadcrumb">
-  <li><a href="index.php?page=adminDashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+  <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
 </ol>
 <?php
 require_once './dbconn.php';

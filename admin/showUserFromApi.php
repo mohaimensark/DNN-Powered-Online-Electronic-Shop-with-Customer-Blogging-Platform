@@ -37,7 +37,7 @@
  
     <thead>
        <tr>
-       <th style="text-align: center;" colspan="7"><h1>Registred user list</h1></th>
+       <th style="text-align: center;" colspan="7"><h1>Registred user list</h1></br><h4>Fetched from rest api</h4></th>
        </tr>
       <tr>
         

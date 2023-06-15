@@ -1,7 +1,7 @@
-<h1 class="text-primary"><i class="far fa-plus-square"></i> Add Product <small>Statistics Overview</small></h1>
+<h1 class="text-primary"><i class="far fa-plus-square"></i> Add Product </h1>
 <ol class="breadcrumb">
-    <li><a href="adminIndex.php?page=adminDashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-    <li><i class="far fa-plus-square"></i> Add Product</a></li>
+    <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+  
 </ol>
 <?php
 

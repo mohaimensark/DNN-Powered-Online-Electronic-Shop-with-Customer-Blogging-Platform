@@ -53,18 +53,18 @@ if (!isset($_SESSION['aduser_login'])) {
 
 </head>
 
-<body>
+<body id="dashboardBG">
   
 
     
  
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default custom">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
+      <div class="navbar-header custom">
 
         <a class="navbar-brand text-danger" href="index.php">Online Shop</a>
-        <a class="navbar-brand" href="adminlogout.php">Logout</a>
+        <a class="navbar-brand text-danger" href="adminlogout.php">Logout</a>
 
       </div>
 

@@ -4,12 +4,23 @@
     font-weight: 400;
 
 }
+.custom2{
+    color:#fff;
+}
+.custom{
+   
+    background-color: rgb(58, 58, 60);
+}
+#dashboardBG{
+    
+    background-color: rgb(196, 197, 197);
+}
 .content {
     min-height: 550px;;
 }
 
 .footer-area{
-    background: rgb(55, 60, 77);
+    background: rgb(1, 13, 50);
     text-align:center;
     color: #fff;
 }

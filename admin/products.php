@@ -1,6 +1,6 @@
 <h1 class="text-primary"><i class="fas fa-list-alt"></i> All Product <small>Statistics Overview</small></h1>
 <ol class="breadcrumb">
-    <li><a href="index.php?page=adminDashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+    <li><a href="index.php"><i class="fa fa-dashboard"></i>Dashboard</a></li>
     <li><i class="fas fa-list-alt"></i> All Products</a></li>
 </ol>
 <?php

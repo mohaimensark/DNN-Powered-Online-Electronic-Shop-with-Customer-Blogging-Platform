@@ -2,7 +2,10 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(187, 160, 160);
+}
+#dashboardBG{
+    color:aqua;
 }
 .header-sec {
     padding: 0px 3%;
