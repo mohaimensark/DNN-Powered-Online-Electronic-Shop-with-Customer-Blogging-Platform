@@ -81,7 +81,7 @@ if (!isset($_SESSION['aduser_login'])) {
         <?php
 
 
-        if (isset($_POST['add-product'])) {
+        if (isset($_POST['add-productc'])) {
             $cat_name = $_POST['choose_cat22'];
             $brand_id = $_POST['choose_brand'];
             $product_title = $_POST['product_title'];
@@ -181,7 +181,7 @@ if (!isset($_SESSION['aduser_login'])) {
                     </div> -->
                     <div class="panel">
                         <label for="photo" class="lol">Photo</label>
-                        <input type="file" id="file-upload" class="hidden" name = "photo" accept="image/x-png,image/gif,image/jpeg"
+                        <input type="file" id="file-upload" class="hidden" name = "photo" accept="image/jpg,image/png,image/gif,image/jpeg"
                             class="lol" />
                         <label for="file-upload" id="file-drag" class="upload-box">
                             <div id="upload-caption">Click to upload image</div>
@@ -193,7 +193,7 @@ if (!isset($_SESSION['aduser_login'])) {
                         <input type="button" value="Predict" class="button" onclick="predict();" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="add-product" value="Add Product"
+                        <input type="submit" name="add-productc" value="Add Product"
                             class="btn btn-primary pull-center" style="margin-left: 160px"/>
                     </div>
 

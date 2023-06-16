@@ -26,7 +26,8 @@ if (isset($_SESSION['user_login'])) {
     <title>E-SHOP</title>
     <!-- Bootstrap -->
     <script src="https://kit.fontawesome.com/cc0fc94170.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/indexSt.css">
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -61,7 +62,8 @@ if (isset($_SESSION['user_login'])) {
             <div class="col-md-1 col-sm-1">
                 <div class="dropdown">
 
-                    <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         <?php
                         if ($user_id) {
                             echo '<img src="images/user_on.png" alt="">';
@@ -77,12 +79,12 @@ if (isset($_SESSION['user_login'])) {
                             <li><a class="dropdown-item" href="regiForm.php">Sign Up</a></li>
                             <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                             <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                        <?php
+                            <?php
                         } else { ?>
                             <li><a class="dropdown-item" href="login.php">Log in</a></li>
                             <li><a class="dropdown-item" href="regiForm.php">Sign Up</a></li>
 
-                        <?php
+                            <?php
                         }
                         ?>
                     </ul>
@@ -93,7 +95,9 @@ if (isset($_SESSION['user_login'])) {
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-bg">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -104,7 +108,7 @@ if (isset($_SESSION['user_login'])) {
                             <a class="" href="index.php">Home</a>
                         </div>
                     </li>
-                  
+
                 </ul>
                 <?php
                 if ($user_id > 0) { ?>
@@ -114,13 +118,13 @@ if (isset($_SESSION['user_login'])) {
                             <span id="cart-item" class="badge badge-danger"></span>
                         </a>
                     </div>
-                <?php
+                    <?php
                 } else { ?>
                     <div id="myCartBtn" class="myCartMenu">
                         <i class="fas fa-shopping-cart"></i>
                         <span id="cart-item" class="badge badge-danger"></span>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
 
@@ -138,24 +142,33 @@ if (isset($_SESSION['user_login'])) {
                     <table class="table table-bordered">
                         <tr>
                             <td>ID</td>
-                            <td><?= $user_id; ?></td>
+                            <td>
+                                <?= $user_id; ?>
+                            </td>
                         </tr>
                         <tr>
                             <td>Name</td>
-                            <td><?= ucwords($taker['name']); ?></td>
+                            <td>
+                                <?= ucwords($taker['name']); ?>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Email</td>
-                            <td><?= $taker['email']; ?></td>
+                            <td>
+                                <?= $taker['email']; ?>
+                            </td>
                         </tr>
 
                         <tr>
                             <td>Birthday</td>
-                            <td><?= $taker['DateOfBirth']; ?></td>
+                            <td>
+                                <?= $taker['DateOfBirth']; ?>
+                            </td>
                         </tr>
                     </table>
-
+                  
+                
                 </div>
 
                 <div class="col-sm-7">
@@ -186,25 +199,37 @@ if (isset($_SESSION['user_login'])) {
                                     $cnum = $row['cardnumber'];
                                     $sqq = mysqli_query($link, "SELECT * FROM `address` Where `address_card`=$cnum");
                                     $nmm = mysqli_fetch_assoc($sqq);
-                                    $ads=$nmm['city'].','.$nmm['subdistrict'].','.$nmm['district'];
-                            
-                                ?>
+                                    $ads = $nmm['city'] . ',' . $nmm['subdistrict'] . ',' . $nmm['district'];
+
+                                    ?>
 
                                     <tr>
 
-                                        <td><?php echo  $cnum; ?> </td>
-                                        <td><?php echo $row['phone']; ?> </td>
-                                        <td><?php echo $ads; ?> </td>
-                                        <td><?php echo $row['pmode']; ?> </td>
-                                        <td><?php echo $row['date']; ?> </td>
-                                        <td><?php echo $row['status']; ?> </td>
+                                        <td>
+                                            <?php echo $cnum; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['phone']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $ads; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['pmode']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['date']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['status']; ?>
+                                        </td>
                                         <td>
 
                                             <a href="profilemore.php?cnum=<?php echo base64_encode($cnum); ?>">Show Details</a>
 
                                         </td>
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                                 ?>
 
@@ -216,16 +241,18 @@ if (isset($_SESSION['user_login'])) {
                     </div>
 
                 </div>
-            <?php
+                <?php
         } else {
 
             echo "<h1>Please <a href='login.php'>Login</a> first</h1>";
         }
-            ?>
+        ?>
             <br><br>
-            </div>
+        </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
 </body>
 <br><br>

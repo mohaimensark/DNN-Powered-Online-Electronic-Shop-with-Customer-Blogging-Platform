@@ -25,6 +25,7 @@ if (isset($_POST['add-product'])) {
     if ($result) {
         move_uploaded_file($_FILES['photo']['tmp_name'], 'images/' . $photo_name);
         $success = "Data inserted successfully";
+       
     } else {
         $error = "Wrong";
     }
