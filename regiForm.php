@@ -8,15 +8,17 @@ if (isset($_POST['sign_up'])) {
     $password = $_POST['password'];
     $c_password = $_POST['c_password'];
     $birthday = $_POST['birthday'];
+
     $username = $_POST['username'];
     $check_username = $_POST['check_username'];
-    if ($check_username == "Username already exists") {
+    echo $check_username;
+    if (strcmp($check_username,"Username available")==0) {
         $email_check = mysqli_query($link, "SELECT * FROM user WHERE email='$email';");
         if (mysqli_num_rows($email_check) == 0) {
             if (strlen($password) > 5) {
                 if ($password == $c_password) {
                     $password = md5($password);
-                    $query = "INSERT INTO `user`(`name`, `email`, `password`, `rating`, `review`, `DateOfBirth`, `username`) VALUES ('$name','$email','$password',-1,'','$birthday','$username')";
+                    $query = "INSERT INTO `user`(`name`, `email`, `password`, `rating`, `review`, `DateOfBirth`, `username`,`user_image`) VALUES ('$name','$email','$password',-1,'','$birthday','$username','')";
 
                     $result = mysqli_query($link, $query);
                     if ($result) {
@@ -35,13 +37,11 @@ if (isset($_POST['sign_up'])) {
             } else {
                 $password_l = "<h6 style='color:red; margin-top: 20px'>password should be more than 5 character</h6>";
             }
-        }
-        else {
+        } else {
             $email_error = "<h6 style='color:red; margin-top: 20px'>This email address is already exists</h6>";
         }
 
-    }
-    else {
+    } else {
         $Username_error = "<h6 style='color:red; margin-top: 20px'>This username is already exists</h6>";
     }
 
@@ -86,10 +86,12 @@ if (isset($_POST['sign_up'])) {
                         <input type="text" name="username" id="username" placeholder="username" value="<?php if (isset($username)) {
                             echo $username;
                         } ?>" autocomplete="off" required>
-                        <div id="displaying">
-                            <input name="check_username" style="border:none;color:red;" value="" disabled>
-                        </div>
+                        
+                            <div id="displaying">
+                                <input type="text" id = "check_username" name="check_username" style="border:none;color:green;" value="">
+                            </div>
                     </div>
+                    
                     <div class="form-item">
                         <label for="email">Enter Email</label>
                         <input type="email" name="email" id="email" placeholder="Email" value="<?php if (isset($email)) {
@@ -134,9 +136,8 @@ if (isset($_POST['sign_up'])) {
                     } else {
                         if (isset($password_not_match)) {
                             echo $password_not_match;
-                        }else{
-                            if(isset($Username_error))
-                            {
+                        } else {
+                            if (isset($Username_error)) {
                                 echo $Username_error;
                             }
                         }

@@ -13,10 +13,14 @@ $output = '';
 if ($search_val == '') {
     $x = $x + 1;
 } else if (mysqli_num_rows($results) > 0) {
-    $output .= '<input id="displaying" name="check_username" style="border:none;color:red;" value="Username already exists" disabled>';
+    $output .= ' <div id="displaying">
+    <input type="text" id = "check_username" name="check_username" style="border:none;color:red;" value="Username already exists">
+</div>';
     echo $output;
 } else {
-    $output .= '<input id="displaying" name="check_username" style="border:none;color:green;" value="Username available" disabled>';
+    $output .= ' <div id="displaying">
+    <input type="text" id = "check_username" name="check_username" style="border:none;color:green;margin-top:none;" value="Username available">
+</div>';
     echo $output;
 }
 ?>
