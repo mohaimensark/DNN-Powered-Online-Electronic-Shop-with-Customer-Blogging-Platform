@@ -55,7 +55,7 @@
 
   <script>
     // Fetch JSON data from the API
-    fetch('http://localhost/online-shopping/api/get.php')
+    fetch('http://localhost/ES/api/get.php')
       .then(response => response.json())
       .then(data => {
         // Get the table body element

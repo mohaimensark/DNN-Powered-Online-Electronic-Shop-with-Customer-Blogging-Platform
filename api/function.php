@@ -31,27 +31,7 @@
                         echo json_encode($data) ;   
                 }
         }
-        function postData() {
-                global $link ;
-                
-                $query = "INSERT INTO `user`(`name`, `email`, `rating`, `review`, `DateOfBirth`, `username`) VALUES ('$link->name','$link->email','$link->rating','$link->review','$link->DateOfBirth','$link->username')";
-                $query_run = mysqli_query($link,$query) ; 
-                
-
-                // $stmt->bindParam(':id', $this->id);
-                // $stmt->bindParam(':name', $this->name);
-                // $stmt->bindParam(':username', $this->username);
-                // $stmt->bindParam(':email', $this->email);
-                // $stmt->bindParam(':rating', $this->rating);
-                // $stmt->bindParam(':review', $this->review);
-                // $stmt->bindParam(':date', $this->date);
-               
-                if($query_run) {
-                    return TRUE;
-                }
         
-                return FALSE;
-            }
 
 
 ?> 
