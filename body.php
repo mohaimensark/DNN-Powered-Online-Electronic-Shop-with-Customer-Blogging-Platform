@@ -8,6 +8,7 @@ if (isset($_SESSION['user_login'])) {
   $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
   $taker = mysqli_fetch_assoc($take);
   $name = $taker['name'];
+  $user_imag = $taker['user_image'];
   $splitter = " ";
   $pieces = explode($splitter, $name);
   //SELECT * FROM `user_info` WHERE user_id='1';
@@ -78,7 +79,7 @@ if (isset($_SESSION['user_login'])) {
             require_once './dbconn.php';
             $user_image = $_SESSION['user_image'];
             if ($user_id) {
-              echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
+              echo '<img src="images/'.$user_imag.'"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
             } else {
               echo '<img src="images/user_off.png" alt="">';
             }
@@ -228,7 +229,7 @@ if (isset($_SESSION['user_login'])) {
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="images/banner2.jpg" class="d-block w-100 img-fluid" alt="...">
+          <img src="images/laptop_Banner.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
           <img src="images/mobile_Banner.jpg" class="d-block w-100" alt="...">

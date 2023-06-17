@@ -7,6 +7,7 @@ $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
 $taker = mysqli_fetch_assoc($take);
 $name = $taker['name'];
 $splitter = " ";
+$user_imag = $taker['user_image'];
 $pieces = explode($splitter, $name);
 
 $grand_total = 0;
@@ -67,7 +68,7 @@ $allItems = implode(', ', $items);
             require_once './dbconn.php';
             $user_image = $_SESSION['user_image'];
             if ($user_id) {
-              echo '<img src="images/' . $user_image . '"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
+              echo '<img src="images/' . $user_imag . '"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
             } else {
               echo '<img src="images/user_off.png" alt="">';
             }
