@@ -16,6 +16,7 @@ if (isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($email_check);
         if ($row['password'] == md5($password)) {
             $user_id = $row['user_id'];
+            $user_image = $row['user_image'];
             $_SESSION['user_login'] = $user_id;
             $_SESSION['user_image'] = $user_image;
             if(isset($_POST['rememberMe'])) {

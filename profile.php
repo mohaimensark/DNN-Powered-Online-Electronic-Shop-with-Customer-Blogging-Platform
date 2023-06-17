@@ -54,7 +54,7 @@ if (isset($_SESSION['user_login'])) {
             <div class="col-md-2 col-sm-2" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
                 <?php
                 if ($user_id) {
-                    echo "Welcome ";
+                  
                     echo $name;
                 }
                 ?>
@@ -65,14 +65,16 @@ if (isset($_SESSION['user_login'])) {
                     <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <?php
+                        session_start();
+                        require_once './dbconn.php';
+                        $user_image = $_SESSION['user_image'];
                         if ($user_id) {
-                            echo '<img src="images/' . $user_image2 . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
+                            echo '<img src="images/' . $user_image . '"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
                         } else {
                             echo '<img src="images/user_off.png" alt="">';
                         }
                         ?>
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <?php
                         if ($user_id > 0) { ?>

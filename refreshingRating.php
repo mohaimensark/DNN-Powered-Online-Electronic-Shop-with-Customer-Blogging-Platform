@@ -12,20 +12,28 @@ $que = "SELECT * FROM `user` where `rating`>=0";
 
 
 
-$row = mysqli_query($link, $que);
-//   $res = mysqli_fetch_assoc($row);
-$output = '';
-while ($res = mysqli_fetch_assoc($row)) {
-    $output .= '<div class="display"><h3><img src="images/'.$res['user_image'].'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $res["name"] . '</h3></div><br>
-            <div class="display"><h3>Given Rating : </h3><h3>' . $res["rating"] . '</h3></div><br>
-            <div class="display"> <h3>Given Review : </h3><h3>' . $res["review"] . '</h3></div><br><br><br>';
-    //  echo $output;
-}
 
+$row=mysqli_query($link, $que);
 
-echo $output;
-
-
+    $outputTable.= '<table>
+    <tr>
+        <th>User Image</th>
+        <th>Username</th>
+        <th>Rating</th>
+        <th>Review</th>
+    </tr>';
+    while ($res = mysqli_fetch_assoc($row)) {
+        $outputTable .= '
+        <tr>
+        <td><img src="images/' . $res['user_image'] . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;"></td>
+        <td>' . $res["name"] . '</td>
+        <td>' . $res["rating"] . '</td>
+        <td>' . $res["review"] . '</td>
+    </tr>';
+        //  echo $output;
+    }
+    $outputTable .= '</table>';
+    echo $outputTable;
 
 
 
@@ -33,19 +41,28 @@ echo $output;
 
 //$result = mysqli_query($conn,$sql);
 
-if (mysqli_query($link, $que)) {
-    // echo 1;
-    $output = '';
-    while ($res = mysqli_fetch_assoc($row)) {
-        $output .= '<div class="display"><h3>Name : </h3><h3>' . $res["name"] . '</h3></div><br>
-            <div class="display"><h3>Given Rating : </h3><h3>' . $res["rating"] . '</h3></div><br>
-            <div class="display"> <h3>Given Review : </h3><h3>' . $res["review"] . '</h3></div><br><br><br>';
-        //  echo $output;
-    }
-
-
-    echo $output;
-} else {
-    echo 0;
-}
+// if (mysqli_query($link, $que)) {
+//     // echo 1;
+//     $outputTabl= '<table>
+//     <tr>
+//         <th>User Image</th>
+//         <th>Username</th>
+//         <th>Rating</th>
+//         <th>Review</th>
+//     </tr>';
+//     while ($res = mysqli_fetch_assoc($row)) {
+//         $outputTabl .= '
+//         <tr>
+//         <td><img src="images/' . $res['user_image'] . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;"></td>
+//         <td>' . $res["name"] . '</td>
+//         <td>' . $res["rating"] . '</td>
+//         <td>' . $res["review"] . '</td>
+//     </tr>';
+//         //  echo $output;
+//     }
+//     $outputTabl .= '</table>';
+//     echo $outputTabl;
+// } else {
+//     echo 0;
+// }
 ?>

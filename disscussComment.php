@@ -29,11 +29,11 @@ if (mysqli_query($link, $insert)) {
         $cnt2 = 0;
 
         $actualName = $ucomID;
-        $user_image2='lol';
+      $user_image2='lol';
         $precom2 = mysqli_query($link, $query6);
         while ($ultName = mysqli_fetch_assoc($precom2)) {
             $actualName = $ultName['name'];
-            $user_image2 = $ultName['user_image'];
+           $user_image2 = $ultName['user_image'];
             break;
         }
 

@@ -33,7 +33,34 @@ if (isset($_SESSION['user_login'])) {
     <link rel="stylesheet" href="styles/myCartSt.css">
     <link rel="stylesheet" href="styles/rating.css">
     <link rel="stylesheet" href="styles/review.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-left: 430px;
+            border: 1px solid #ddd;
+        }
 
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,7 +75,7 @@ if (isset($_SESSION['user_login'])) {
             <div class="col-md-2 col-sm-2" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
                 <?php
                 if ($user_id) {
-                    echo "Welcome ";
+
                     echo $name;
                 }
                 ?>
@@ -59,8 +86,11 @@ if (isset($_SESSION['user_login'])) {
                     <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <?php
+                        session_start();
+                        require_once './dbconn.php';
+                        $user_image = $_SESSION['user_image'];
                         if ($user_id) {
-                            echo '<img src="images/user_on.png" alt="">';
+                            echo '<img src="images/' . $user_image . '"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
                         } else {
                             echo '<img src="images/user_off.png" alt="">';
                         }
@@ -103,6 +133,17 @@ if (isset($_SESSION['user_login'])) {
                             <a class="" href="index.php">Home</a>
                         </div>
                     </li>
+                    <?php
+                    if ($user_id > 0) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="discussion.php">Discussion</a>
+                        </li>
+                        <?php
+                    } else { ?>
+
+                        <?php
+                    }
+                    ?>
 
                 </ul>
                 <?php
@@ -132,7 +173,7 @@ if (isset($_SESSION['user_login'])) {
 
     <br><br>
 
-    <div class="rated2" id = "finres">
+    <div class="rated2" id="finres">
         <h1>Current Rating</h1>
         <div class="starr">
             <?php
@@ -142,8 +183,8 @@ if (isset($_SESSION['user_login'])) {
             $res = mysqli_fetch_assoc($row);
             $actrat = floatval($res['avg']);
             $avgr = intval(round($res['avg']));
-            
-            $output = '<h4> '.$actrat.' <h4>';
+
+            $output = '<h4> ' . $actrat . ' <h4>';
             while ($avgr--) {
                 $output .= '<span class="fa fa-star checked"></span>';
             }
@@ -154,7 +195,7 @@ if (isset($_SESSION['user_login'])) {
                 $rem--;
                 $output .= '<span class="fa fa-star"></span>';
             }
-             $output .='</div>';
+            $output .= '</div>';
             echo $output;
             ?>
         </div>
@@ -186,6 +227,7 @@ if (isset($_SESSION['user_login'])) {
         <div class="titler">
             <h1>Who rated us:</h1>
         </div>
+        
         <div class="rated" id="refresh">
             <?php
 
@@ -196,16 +238,28 @@ if (isset($_SESSION['user_login'])) {
 
             $row = mysqli_query($link, $que);
             //   $res = mysqli_fetch_assoc($row);
-            $output = '';
+          
+            
+            $outputTable='<table>
+            <tr>
+                <th>User Image</th>
+                <th>Username</th>
+                <th>Rating</th>
+                <th>Review</th>
+            </tr>';
             while ($res = mysqli_fetch_assoc($row)) {
-                $output .= '<div class = "individual"><div class="display"><h3><img src="images/'.$res['user_image'].'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $res["name"] . '</h3></div><br>
-            <div class="display"><h3>Given Rating : </h3><h3>' . $res["rating"] . '</h3></div><br>
-            <div class="display"> <h3>Given Review : </h3><h3>' . $res["review"] . '</h3></div></div><br><br><br>';
+                $outputTable .= '
+                <tr>
+                <td><img src="images/' . $res['user_image'] . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;"></td>
+                <td>' . $res["name"] . '</td>
+                <td>' . $res["rating"] . '</td>
+                <td>' . $res["review"] . '</td>
+            </tr>';
                 //  echo $output;
             }
 
-
-            echo $output;
+            $outputTable.='</table>';
+            echo $outputTable;
             ?>
 
 
@@ -246,8 +300,10 @@ if (isset($_SESSION['user_login'])) {
         $(document).ready(function () {
             setInterval(function () {
                 $.ajax({
+                  
                     url: "refreshingRating.php",
                     success: function (data) {
+                        //alert(data);
                         $('#refresh').html(data); // Update the content of the DIV element
                     }
                 });
@@ -285,17 +341,17 @@ if (isset($_SESSION['user_login'])) {
                 },
                 success: function (data) {
                     if (data) {
-                     
-                        
+
+
                         var output = '<div class="starr" id="finres">';
-                        output+='<h1>Current Rating</h1>';
-                        output+='<h4>';
-                        output+= data;
-                        output+='</h4>';
-                      
+                        output += '<h1>Current Rating</h1>';
+                        output += '<h4>';
+                        output += data;
+                        output += '</h4>';
+
                         var x = parseInt(data);
                         var y = 5 - x;
-                        
+
                         while (x--) {
                             output += '<span class="fa fa-star checked"></span>';
                         }

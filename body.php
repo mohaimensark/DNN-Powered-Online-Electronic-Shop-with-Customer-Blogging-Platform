@@ -76,9 +76,9 @@ if (isset($_SESSION['user_login'])) {
             <?php
             session_start();
             require_once './dbconn.php';
-           //  echo $user_image;
+            $user_image = $_SESSION['user_image'];
             if ($user_id) {
-              echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
+              echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
             } else {
               echo '<img src="images/user_off.png" alt="">';
             }
@@ -228,7 +228,7 @@ if (isset($_SESSION['user_login'])) {
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="images/laptop_Banner.jpg" class="d-block w-100 img-fluid" alt="...">
+          <img src="images/banner2.jpg" class="d-block w-100 img-fluid" alt="...">
         </div>
         <div class="carousel-item">
           <img src="images/mobile_Banner.jpg" class="d-block w-100" alt="...">

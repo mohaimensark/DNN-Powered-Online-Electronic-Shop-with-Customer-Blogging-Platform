@@ -1,7 +1,7 @@
 <?php 
         include '../dbconn.php' ; 
         function getCustomerList() {
-                $query = "SELECT * from `user`" ; 
+                $query = "SELECT * from `user` where `rating`>=0" ; 
                 global $link ; 
                 $query_run = mysqli_query($link,$query) ; 
                 if($query_run) {

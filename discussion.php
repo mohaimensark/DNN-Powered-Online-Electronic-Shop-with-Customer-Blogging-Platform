@@ -48,7 +48,7 @@ if (isset($_SESSION['user_login'])) {
             <div class="col-md-2 col-sm-2" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
                 <?php
                 if ($user_id) {
-                    echo "Welcome ";
+                   
                     echo $name;
                 }
                 ?>
@@ -59,14 +59,16 @@ if (isset($_SESSION['user_login'])) {
                     <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <?php
+                        session_start();
+                        require_once './dbconn.php';
+                        $user_image = $_SESSION['user_image'];
                         if ($user_id) {
-                            echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
+                            echo '<img src="images/' . $user_image . '"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
                         } else {
                             echo '<img src="images/user_off.png" alt="">';
                         }
                         ?>
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                         <?php
@@ -182,7 +184,7 @@ if (isset($_SESSION['user_login'])) {
                     // retriving realname
                     $query33 = "SELECT * FROM `user` WHERE `user_id`='$realnames'";
                     $row33 = mysqli_query($link, $query33);
-                    $user_image3='lol';
+                    $user_image3 = 'lol';
                     while ($lol = mysqli_fetch_assoc($row33)) {
                         $realname = $lol['name'];
                         $user_image3 = $lol['user_image'];
@@ -221,7 +223,7 @@ if (isset($_SESSION['user_login'])) {
 
 
 
-                    $output .= '<div class="borderClass"><h4 class="nametitle"> <img src="images/'.$user_image3.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;"> ' . $realname . '</h4>';
+                    $output .= '<div class="borderClass"><h4 class="nametitle"> <img src="images/' . $user_image3 . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;"> ' . $realname . '</h4>';
                     $output .= '<div class="content">
               <h5 class = "lollo" id="post_content">' . $res['post_content'] . '</h5></div>';
 
@@ -270,7 +272,7 @@ if (isset($_SESSION['user_login'])) {
                         $cnt2 = 0;
 
                         $actualName = $ucomID;
-                        $user_image2='lol';
+                        $user_image2 = 'lol';
                         $precom2 = mysqli_query($link, $query6);
                         while ($ultName = mysqli_fetch_assoc($precom2)) {
                             $actualName = $ultName['name'];
@@ -278,7 +280,7 @@ if (isset($_SESSION['user_login'])) {
                             break;
                         }
 
-                        $output .= '<div  class = "indicomment"><p class="commentContent"> <img src="images/'.$user_image2.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $actualName . ' : ' . $comment['comment_content'] . '</p></div>';
+                        $output .= '<div  class = "indicomment"><p class="commentContent"> <img src="images/' . $user_image2 . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $actualName . ' : ' . $comment['comment_content'] . '</p></div>';
                     }
                     $output .= ' </div> </div> </div>';
                 }
@@ -404,25 +406,26 @@ if (isset($_SESSION['user_login'])) {
             console.log(comment_text);
             var action = "add";
 
-
+            
 
             $.ajax({
                 url: "disscussComment.php",
                 type: "POST",
+                
                 data: {
                     post_id: post_id,
                     comment_text: comment_text
                 },
-                success: function (data) {
-                    if (data) {
+                success: function(data) {
+                    if(data) {
 
-                        alert(data);
+                      //  alert(data);
                         $("#commentRefresh" + post_id + '').html(data);
 
 
                     } else {
 
-                        // alert("bye");
+                         alert("bye");
                     }
 
 
