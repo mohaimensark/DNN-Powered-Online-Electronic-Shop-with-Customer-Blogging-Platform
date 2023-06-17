@@ -2,8 +2,19 @@
 require_once './dbconn.php';
 session_start();
 if (isset($_SESSION['user_login'])) {
-    
+
     header('location:index.php');
+}
+if (isset($_COOKIE['userid'])) {
+    $user_id = $_COOKIE['userid'];
+
+    $user_check = mysqli_query($link, "SELECT * FROM `user` WHERE `user_id`='$user_id';");
+    if (mysqli_num_rows($user_check) > 0) {
+        header('location:index.php');
+    }
+
+} else {
+    $emailid = $password = "";
 }
 
 if (isset($_POST['login'])) {
@@ -19,16 +30,15 @@ if (isset($_POST['login'])) {
             $user_image = $row['user_image'];
             $_SESSION['user_login'] = $user_id;
             $_SESSION['user_image'] = $user_image;
-            if(isset($_POST['rememberMe'])) {
-              // echo 'checked';
-            
-              $userId = $user_id; // Replace with the actual user ID
-            //   $rememberToken = generateRememberToken(); // Replace with your token generation logic
-              setcookie('rememberMe' , true, time() + (30 * 24 * 60 * 60), '/');
-          
-            
+
+            if (isset($_POST['rememberMe'])) {
+                setcookie('userid', $user_id, time() + 24 * 60 * 60); //24 hour
+
             }
-           header('location:index.php');
+
+
+
+            header('location:index.php');
         } else {
             $wrong_password = "This password is wrong";
         }
@@ -52,7 +62,7 @@ if (isset($_POST['login'])) {
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/loginFormSt.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="gsapcss.css" />
+    <link rel="stylesheet" href="gsapcss.css" />
 </head>
 
 <body>
@@ -63,7 +73,7 @@ if (isset($_POST['login'])) {
                 <h3>Welcome Back</h3>
                 <h4>Login here</h4>
             </div>
-            
+
             <div class="login-text">
                 <form action="login.php" method="POST">
                     <div>
@@ -82,11 +92,12 @@ if (isset($_POST['login'])) {
                     </div>
                     <br>
                     <div>
-                    <!-- <input type="checkbox" name="rememberMe" id="rememberMeCheckbox">
-                         Remember Me -->
+                        <input type="checkbox" name="rememberMe" id="rememberMe">
+                        Remember Me
                     </div>
                     <div>
-                        <input class="btn btn-primary" style="margin-left:120px" type="submit" value="Login" name="login">
+                        <input class="btn btn-primary" style="margin-left:120px" type="submit" value="Login"
+                            name="login">
                     </div>
                 </form>
 
@@ -120,7 +131,7 @@ if (isset($_POST['login'])) {
             <!-- <g id="dot-container"></g> -->
         </svg>
 
-     
+
         <!-- partial -->
         <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
         <script src="js/Animscript.js"></script>
@@ -129,7 +140,7 @@ if (isset($_POST['login'])) {
 
 
     </div>
-    
+
 </body>
 
 </html>

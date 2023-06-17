@@ -13,6 +13,20 @@ if (isset($_SESSION['user_login'])) {
   $pieces = explode($splitter, $name);
   //SELECT * FROM `user_info` WHERE user_id='1';
 }
+else if (isset($_COOKIE['userid'])) {
+  $user_id = $_COOKIE['userid'];
+  $_SESSION['user_login']=$user_id;
+  $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
+  $taker = mysqli_fetch_assoc($take);
+  $name = $taker['name'];
+  $user_imag = $taker['user_image'];
+  $splitter = " ";
+  $pieces = explode($splitter, $name);
+}else{
+  $x++;
+}
+
+
 
 
 ?>
@@ -66,6 +80,7 @@ if (isset($_SESSION['user_login'])) {
         <?php
         if ($user_id) {
           echo "Welcome ";
+
           echo $name;
         }
         ?>
