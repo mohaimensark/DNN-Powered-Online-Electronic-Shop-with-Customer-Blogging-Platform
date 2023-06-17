@@ -17,6 +17,7 @@ if (isset($_POST['login'])) {
         if ($row['password'] == md5($password)) {
             $user_id = $row['user_id'];
             $_SESSION['user_login'] = $user_id;
+            $_SESSION['user_image'] = $user_image;
             if(isset($_POST['rememberMe'])) {
               // echo 'checked';
             

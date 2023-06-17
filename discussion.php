@@ -60,7 +60,7 @@ if (isset($_SESSION['user_login'])) {
                         aria-expanded="false">
                         <?php
                         if ($user_id) {
-                            echo '<img src="images/user_on.png" alt="">';
+                            echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
                         } else {
                             echo '<img src="images/user_off.png" alt="">';
                         }
@@ -182,8 +182,10 @@ if (isset($_SESSION['user_login'])) {
                     // retriving realname
                     $query33 = "SELECT * FROM `user` WHERE `user_id`='$realnames'";
                     $row33 = mysqli_query($link, $query33);
+                    $user_image3='lol';
                     while ($lol = mysqli_fetch_assoc($row33)) {
                         $realname = $lol['name'];
+                        $user_image3 = $lol['user_image'];
                         break;
                     }
 
@@ -219,7 +221,7 @@ if (isset($_SESSION['user_login'])) {
 
 
 
-                    $output .= '<div class="borderClass"><h4 class="nametitle"># ' . $realname . '</h4>';
+                    $output .= '<div class="borderClass"><h4 class="nametitle"> <img src="images/'.$user_image3.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;"> ' . $realname . '</h4>';
                     $output .= '<div class="content">
               <h5 class = "lollo" id="post_content">' . $res['post_content'] . '</h5></div>';
 
@@ -268,14 +270,15 @@ if (isset($_SESSION['user_login'])) {
                         $cnt2 = 0;
 
                         $actualName = $ucomID;
-
+                        $user_image2='lol';
                         $precom2 = mysqli_query($link, $query6);
                         while ($ultName = mysqli_fetch_assoc($precom2)) {
                             $actualName = $ultName['name'];
+                            $user_image2 = $ultName['user_image'];
                             break;
                         }
 
-                        $output .= '<div  class = "indicomment"><p class="commentContent"> ' . $actualName . ' : ' . $comment['comment_content'] . '</div>';
+                        $output .= '<div  class = "indicomment"><p class="commentContent"> <img src="images/'.$user_image2.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $actualName . ' : ' . $comment['comment_content'] . '</p></div>';
                     }
                     $output .= ' </div> </div> </div>';
                 }

@@ -4,6 +4,7 @@ require_once './dbconn.php';
 $user_id = 0;
 if (isset($_SESSION['user_login'])) {
   $user_id = $_SESSION['user_login'];
+  $user_image = $_SESSION['user_image'];
   $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
   $taker = mysqli_fetch_assoc($take);
   $name = $taker['name'];
@@ -73,8 +74,11 @@ if (isset($_SESSION['user_login'])) {
 
           <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php
+            session_start();
+            require_once './dbconn.php';
+           //  echo $user_image;
             if ($user_id) {
-              echo '<img src="images/user_on.png" alt="">';
+              echo '<img src="images/'.$user_image.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
             } else {
               echo '<img src="images/user_off.png" alt="">';
             }

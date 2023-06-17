@@ -66,7 +66,7 @@ if (isset($_SESSION['user_login'])) {
                         aria-expanded="false">
                         <?php
                         if ($user_id) {
-                            echo '<img src="images/user_on.png" alt="">';
+                            echo '<img src="images/' . $user_image2 . '"  alt="..." style="border-radius: 50%; height: 50px; width:50px;">';
                         } else {
                             echo '<img src="images/user_off.png" alt="">';
                         }
@@ -108,6 +108,28 @@ if (isset($_SESSION['user_login'])) {
                             <a class="" href="index.php">Home</a>
                         </div>
                     </li>
+                    <?php
+                    if ($user_id > 0) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="rating.php">Rate us</a>
+                        </li>
+                        <?php
+                    } else { ?>
+
+                        <?php
+                    }
+                    ?>
+                    <?php
+                    if ($user_id > 0) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="discussion.php">Discussion</a>
+                        </li>
+                        <?php
+                    } else { ?>
+
+                        <?php
+                    }
+                    ?>
 
                 </ul>
                 <?php
@@ -167,8 +189,50 @@ if (isset($_SESSION['user_login'])) {
                             </td>
                         </tr>
                     </table>
-                  
-                
+                    <?php
+
+
+                    if (isset($_POST['add-profile'])) {
+
+                        session_start();
+                        require_once './dbconn.php';
+
+                        $user_id = 0;
+
+                        $user_id = $_SESSION['user_login'];
+                        $photo = $_FILES['photo']['name'];
+                        $photo = explode('.', $photo);
+                        $photo_extension = end($photo);
+                        $photo_start = $photo[0];
+                        $photo_name = $photo_start . '.' . $photo_extension;
+
+
+
+
+                        $query = "UPDATE `user` SET `user_image`='$photo_name' WHERE `user_id`='$user_id'";
+                        $result = mysqli_query($link, $query);
+                        if ($result) {
+                            move_uploaded_file($_FILES['photo']['tmp_name'], 'images/' . $photo_name);
+                            $success = "Data inserted successfully";
+
+                        } else {
+                            $error = "Wrong";
+                        }
+                    }
+
+                    ?>
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" id="photo" name="photo">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="add-profile" value="Add Profile Picture"
+                                class="btn btn-primary pull-right" style="margin-top:20px;" />
+                        </div>
+
+
                 </div>
 
                 <div class="col-sm-7">
