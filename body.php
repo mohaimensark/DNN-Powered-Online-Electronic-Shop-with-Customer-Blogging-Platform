@@ -292,7 +292,7 @@ else if (isset($_COOKIE['userid'])) {
                   <?php echo $hw['product_title']; ?>
                 </h5>
                 <p class="card-text">
-                  <?php echo $row['description'] ?>
+                  <?php echo $hw['description'] ?>
                 </p>
               </div>
               <div class="d-flex justify-content-between pCardPrice">
