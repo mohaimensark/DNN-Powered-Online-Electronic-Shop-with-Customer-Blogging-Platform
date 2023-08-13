@@ -4,7 +4,7 @@ require_once './dbconn.php';
 $user_id = 0;
 if (isset($_SESSION['user_login'])) {
   $user_id = $_SESSION['user_login'];
-  $user_image = $_SESSION['user_image'];
+ // $user_image = $_SESSION['user_image'];
   $take = mysqli_query($link, "SELECT * FROM `user` WHERE user_id='$user_id';");
   $taker = mysqli_fetch_assoc($take);
   $name = $taker['name'];
@@ -23,7 +23,7 @@ else if (isset($_COOKIE['userid'])) {
   $splitter = " ";
   $pieces = explode($splitter, $name);
 }else{
-  $x++;
+ 
 }
 
 
@@ -90,9 +90,9 @@ else if (isset($_COOKIE['userid'])) {
 
           <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php
-            session_start();
+            //session_start();
             require_once './dbconn.php';
-            $user_image = $_SESSION['user_image'];
+           // $user_image = $_SESSION['user_image'];
             if ($user_id) {
               echo '<img src="images/'.$user_imag.'"  alt="..." style="border-radius: 50%; height: 40px; width:40px;">';
             } else {
@@ -406,7 +406,8 @@ else if (isset($_COOKIE['userid'])) {
         $i = 1;
 
         $row = mysqli_fetch_assoc($tb_pinfo);
-        $cat_id = $row['cat_id'];
+        if($row)
+         $cat_id = $row['cat_id'];
         while ($row and $i < 4) { ?>
           <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="product-bg">

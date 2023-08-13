@@ -64,7 +64,7 @@ $allItems = implode(', ', $items);
 
           <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <?php
-            session_start();
+         //   session_start();
             require_once './dbconn.php';
             $user_image = $_SESSION['user_image'];
             if ($user_id) {

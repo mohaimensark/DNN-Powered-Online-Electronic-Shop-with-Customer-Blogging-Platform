@@ -195,7 +195,7 @@ if (isset($_SESSION['user_login'])) {
 
                     if (isset($_POST['add-profile'])) {
 
-                        session_start();
+             //           session_start();
                         require_once './dbconn.php';
 
                         $user_id = 0;

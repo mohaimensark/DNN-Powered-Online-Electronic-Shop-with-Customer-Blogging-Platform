@@ -1,8 +1,8 @@
 <?php
 include 'dbconn.php';
-$id = $_POST["id"];
-$review = $_POST["review"];
-$rating = $_POST["rating"];
+//$id = $_POST["id"];
+//$review = $_POST["review"];
+//$rating = $_POST["rating"];
 
 
 $que = "SELECT * FROM `user` where `rating`>=0";
@@ -12,7 +12,7 @@ $que = "SELECT * FROM `user` where `rating`>=0";
 
 
 
-
+$outputTable='';
 $row=mysqli_query($link, $que);
 
     $outputTable.= '<table>

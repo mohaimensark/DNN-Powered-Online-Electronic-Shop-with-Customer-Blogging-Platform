@@ -21,7 +21,7 @@ if (mysqli_query($link, $insert)) {
 
   
 
-   
+    $output='';
    
     while ($comment = mysqli_fetch_assoc($precom)) {
         $ucomID = $comment['user_id'];
@@ -36,7 +36,7 @@ if (mysqli_query($link, $insert)) {
            $user_image2 = $ultName['user_image'];
             break;
         }
-
+       
         $output .= '<div  class = "indicomment"><p class="commentContent"> <img src="images/'.$user_image2.'"  alt="..." style="border-radius: 50%; height: 50px; width:50px;margin:10px;">' . $actualName . ' : ' . $comment['comment_content'] . '</div>';
     }
    

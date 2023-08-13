@@ -43,7 +43,7 @@ if (isset($_SESSION['user_login'])) {
     <div class="header-sec">
         <div class="row">
             <div class="col-md-9 col-sm-9 brand-logo">
-                <p><span class="no-same no-shop">ELECTRONIC </span><span class="no-same logo-shop">SHOP</span></p>
+                <p><span class="no-same no-shop">E </span><span class="no-same logo-shop">SHOP</span></p>
             </div>
 
             <div class="col-md-2 col-sm-2" style="text-align: center;margin-top: 10px;margin-bottom: 10px;">
@@ -60,7 +60,7 @@ if (isset($_SESSION['user_login'])) {
                     <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <?php
-                        session_start();
+                      //  session_start();
                         require_once './dbconn.php';
                         $user_image = $_SESSION['user_image'];
                         if ($user_id) {

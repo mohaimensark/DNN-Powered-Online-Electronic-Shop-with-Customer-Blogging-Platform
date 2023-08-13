@@ -11,7 +11,7 @@ if (isset($_POST['sign_up'])) {
 
     $username = $_POST['username'];
     $check_username = $_POST['check_username'];
-    echo $check_username;
+   // echo $check_username;
     if (strcmp($check_username,"Username available")==0) {
         $email_check = mysqli_query($link, "SELECT * FROM user WHERE email='$email';");
         if (mysqli_num_rows($email_check) == 0) {
